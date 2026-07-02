@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Introuvable (404) | G Hypnose</title>
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Background Elements -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <header>
+      <nav class="glass-nav" aria-label="Navigation principale">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+          <span class="brand-initial">G</span>
+          <span class="brand-text">Hypnose</span>
+        </a>
+        <ul id="primary-navigation">
+          <li><a href="index.html#about">À propos</a></li>
+          <li><a href="index.html#approach">L'hypnose</a></li>
+          <li><a href="index.html#services">Mes Offres</a></li>
+          <li><a href="index.html#process">Déroulement</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 1rem;">
+          <a href="index.html#contact" class="btn btn-primary nav-btn" aria-label="Prendre rendez-vous">Prendre RDV</a>
+          <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Ouvrir le menu">
+            <span class="hamburger"></span>
+          </button>
+        </div>
+        <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+      </nav>
+    </header>
+
+    <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding-top: 100px;">
+      <section class="section">
+        <div class="container narrow text-center">
+          <div class="glass-card animate-on-scroll">
+            <h1 class="hypno-title text-center" style="font-size: 5rem; margin-bottom: 1rem; color: var(--accent-primary);">404</h1>
+            <h2 style="font-family: var(--font-title); font-size: 2rem; margin-bottom: 2rem;">Le chemin s'est égaré...</h2>
+            
+            <div style="color: var(--text-muted); line-height: 1.8; margin-bottom: 3rem;">
+              <p>
+                Il semblerait que la page que vous cherchez n'existe plus ou a été déplacée.
+                Ne vous inquiétez pas, vous pouvez toujours retrouver votre chemin vers un état plus serein.
+              </p>
+            </div>
+
+            <a href="index.html" class="btn btn-primary">Retourner à l'accueil</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="glass-footer" style="margin-top: auto;">
+      <div class="container footer-grid">
+        <div class="footer-info">
+          <p>&copy; 2026 G Hypnose. Tous droits réservés.</p>
+          <p>Cabinet situé au cœur de la sérénité. <a href="tel:+33698060008" class="phone-link">06 98 06 00 08</a></p>
+        </div>
+        <nav class="footer-links" style="display: flex; align-items: center;">
+          <a href="mentions-legales.html">Mentions Légales</a>
+          <a href="rgpd.html">RGPD</a>
+          <div class="social-links" style="display: flex; gap: 1rem; align-items: center; border-left: 1px solid var(--glass-border); padding-left: 1rem; margin-left: 1rem;">
+            <a href="#" aria-label="Facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="scroll-top-btn" aria-label="Retour en haut de la page" title="Retour en haut">
+      ↑
+    </button>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

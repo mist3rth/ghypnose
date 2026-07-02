@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-deep: #050b14;
+  --color-accent-primary: #d4af37;
+  --color-accent-secondary: #8a9bb2;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #9ca3af;
+
+  --font-title: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Playfair Display", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+  body {
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 1.5rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  }
+  .glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  }
+  .glass-nav {
+    background: rgba(10, 10, 26, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+  }
+  .btn {
+    padding: 1rem 2.2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-primary {
+    background: var(--color-accent-primary);
+    color: white;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.03);
+    color: white;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    backdrop-filter: blur(24px);
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
