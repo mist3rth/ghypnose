@@ -50,6 +50,14 @@ export function Mentions() {
               L'hypnose pratiquée par Grégory Fitoussi est non médicale, elle s'inscrit dans une démarche d'accompagnement et de développement personnel. Elle ne se substitue en aucun cas à un avis juridique, médical ou psychiatrique. En cas de pathologie avérée, un suivi par un professionnel de la santé est primordial.
             </p>
           </div>
+
+          <div>
+            <h2 className="text-accent-primary font-title text-2xl mb-4">6. Assurance Professionnelle</h2>
+            <p>
+              Assurance Responsabilité Civile Professionnelle : <strong>AXA</strong><br />
+              Contrat n° : <strong>10389249304</strong>
+            </p>
+          </div>
         </div>
       </section>
     </div>

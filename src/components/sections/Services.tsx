@@ -1,5 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
-import { User, Baby, Footprints, Gift, ArrowRight } from 'lucide-react';
+import { Gift, ArrowRight } from 'lucide-react';
 
 export function Services() {
   return (
@@ -22,10 +22,7 @@ export function Services() {
           <FadeIn delay={0.1} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
               <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
-              
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-primary/20 to-transparent flex items-center justify-center mb-6 border border-accent-primary/20 group-hover:scale-110 transition-transform duration-500">
-                <User className="w-7 h-7 text-accent-primary" />
-              </div>
+
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Adulte</h3>
               <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
@@ -48,10 +45,7 @@ export function Services() {
           <FadeIn delay={0.2} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
               <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
-              
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-primary/20 to-transparent flex items-center justify-center mb-6 border border-accent-primary/20 group-hover:scale-110 transition-transform duration-500">
-                <Baby className="w-7 h-7 text-accent-primary" />
-              </div>
+
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Enfant & Ado</h3>
               <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
@@ -72,10 +66,7 @@ export function Services() {
           <FadeIn delay={0.3} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
               <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
-              
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-primary/20 to-transparent flex items-center justify-center mb-6 border border-accent-primary/20 group-hover:scale-110 transition-transform duration-500">
-                <Footprints className="w-7 h-7 text-accent-primary" />
-              </div>
+
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Réflexologie</h3>
               <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
@@ -136,7 +127,7 @@ export function Services() {
                 <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
                   <li>Offrez un moment de détente et de rééquilibrage profond</li>
                   <li>Protocole complet personnalisé</li>
-                  <li>Idéal pour soulager le stress et les tensions physiques</li>
+                  <li>Idéal pour soulager le stress et les tensions</li>
                 </ul>
                 
                 <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">

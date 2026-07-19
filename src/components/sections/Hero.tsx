@@ -4,7 +4,7 @@ export function Hero() {
       <div className="max-w-[800px] z-10 text-center">
         <h1 className="sr-only">Hypnose Ericksonienne à Paris | Grégory Fitoussi</h1>
         <p className="text-[clamp(2rem,8vw,5rem)] leading-[1.1] mb-7 bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
-          Libérez votre potentiel et reprenez le contrôle de votre vie
+          Et si nous tentions de découvrir vos Mécanismes Intérieurs ?
         </p>
         <p className="text-[1.1rem] sm:text-[1.4rem] text-white mb-12 font-medium drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)] tracking-wide">
           - Grégory Fitoussi -<br/>

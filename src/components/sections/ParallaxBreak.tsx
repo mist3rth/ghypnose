@@ -16,7 +16,9 @@ export function ParallaxBreak() {
       <div className="relative z-10 max-w-[800px] mx-auto px-4 text-center">
         <FadeIn>
           <h2 className="text-[clamp(1.5rem,5vw,2.5rem)] font-title text-white font-medium leading-[1.3] mb-8 text-shadow-lg">
-            "Le premier pas vers le changement est de décider que vous n'allez pas rester là où vous êtes."
+            Vous avez tout essayé ? Cherché partout ? Même demandé à Chat GPT ?
+            <br className="my-2" />
+            Et si la réponse se trouvait déjà en vous-même ??
           </h2>
           <a href="#contact" className="btn btn-primary shadow-[0_0_20px_rgba(212,175,55,0.4)]">
             Commencer mon accompagnement

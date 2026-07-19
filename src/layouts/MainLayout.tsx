@@ -115,6 +115,7 @@ export function MainLayout({ children }: MainLayoutProps) {
             </div>
             <p>&copy; 2026 G Hypnose. Tous droits réservés.</p>
             <p>Cabinet situé au cœur de la sérénité. <a href="tel:+33698060008" className="text-accent-primary hover:underline ml-2 font-medium">06 98 06 00 08</a></p>
+            <p className="mt-2 text-[0.85em] opacity-80">Assurance Responsabilité Civile Professionnelle AXA Contrat n° 10389249304</p>
           </div>
           
           <nav className="flex items-center gap-8">
@@ -132,7 +133,7 @@ export function MainLayout({ children }: MainLayoutProps) {
 
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent-primary text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 z-50 ${
+        className={`cursor-pointer fixed bottom-8 right-8 p-3 rounded-full bg-accent-primary text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 z-50 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
         aria-label="Retour en haut"

@@ -2,7 +2,8 @@ export function Marquee() {
   const content = (
     <div className="flex items-center gap-16 shrink-0 pr-16">
        <div className="flex items-center gap-4">
-          <span className="text-white font-medium text-[1rem] md:text-[1.1rem] whitespace-nowrap">Certifié par l'Institut Français d'Hypnose</span>
+          <img src="/images/logo-arche.png" alt="ARCHE Formation" width="40" height="40" className="h-10 w-auto object-contain invert brightness-0" />
+          <span className="text-white font-medium text-[1rem] md:text-[1.1rem] whitespace-nowrap">formé à l'ARCHE Formation</span>
        </div>
        <div className="w-1.5 h-1.5 rounded-full bg-accent-primary"></div>
        <div className="flex items-center gap-4">
