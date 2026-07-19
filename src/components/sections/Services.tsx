@@ -3,7 +3,7 @@ import { Gift, ArrowRight } from 'lucide-react';
 
 export function Services() {
   return (
-    <section id="services" className="py-[clamp(4rem,10vw,8rem)] px-4 relative">
+    <section id="services" className="py-[clamp(4rem,10vw,8rem)] px-4 relative overflow-hidden">
       {/* Decorative background glow for the whole section */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
@@ -91,8 +91,8 @@ export function Services() {
           <FadeIn direction="up">
             <div className="flex items-center justify-center gap-4 mb-10">
               <div className="h-[1px] bg-gradient-to-r from-transparent to-accent-secondary/50 w-24 md:w-48"></div>
-              <h3 className="text-2xl font-title text-accent-secondary font-semibold flex items-center gap-3">
-                <Gift className="w-6 h-6" /> Faire Plaisir
+              <h3 className="text-2xl font-title text-accent-secondary font-semibold flex max-[430px]:flex-col items-center gap-2 min-[431px]:gap-3 text-center">
+                <Gift className="w-6 h-6" /> <span>Faire Plaisir</span>
               </h3>
               <div className="h-[1px] bg-gradient-to-l from-transparent to-accent-secondary/50 w-24 md:w-48"></div>
             </div>

@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-
-import logoImg from '../assets/logo.webp';
+import { Phone } from 'lucide-react';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -54,9 +53,10 @@ export function MainLayout({ children }: MainLayoutProps) {
       <div className="fixed w-[500px] h-[500px] rounded-full blur-[100px] -z-10 opacity-30 pointer-events-none bg-[radial-gradient(circle,var(--color-accent-secondary)_0%,transparent_70%)] -bottom-[100px] -left-[100px] animate-[float_25s_infinite_alternate-reverse]"></div>
 
       <header>
-        <nav className="glass-nav fixed top-6 left-1/2 -translate-x-1/2 w-[min(95%,1200px)] z-50 flex justify-between items-center px-[clamp(1.2rem,3vw,2.5rem)] py-2.5 rounded-full transition-all">
-          <a href="/" className="flex items-center gap-1.5 no-underline select-none">
-            <img src={logoImg} alt="G Hypnose Logo" className="h-9 w-auto object-contain" width="36" height="36" />
+        <nav className="glass-nav fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-[1200px] z-50 flex justify-between items-center px-4 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all">
+          <a href="/" className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0">
+            <img src="/images/logo-transparent.webp" alt="G Hypnose Logo" className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" width="36" height="36" />
+            <span className="font-semibold text-base sm:text-[1.15rem] text-text-main tracking-wide group-hover:text-accent-secondary transition-colors truncate">GHypnose</span>
           </a>
           
           <ul className="hidden lg:flex list-none gap-[clamp(1rem,2.5vw,2.5rem)] items-center m-0 p-0">
@@ -67,15 +67,15 @@ export function MainLayout({ children }: MainLayoutProps) {
             <li><a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Contact</a></li>
           </ul>
 
-          <div className="flex items-center gap-3">
-            <a href="/#contact" className="!hidden lg:!inline-flex btn btn-primary !px-5 !py-2 text-[0.85rem]">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="!hidden lg:!inline-flex btn btn-primary !px-5 !py-2 text-[0.85rem]">
               Prendre RDV
             </a>
-            <a href="/#contact" className="lg:!hidden bg-accent-primary text-white w-9 h-9 flex items-center justify-center rounded-full shadow-[0_5px_20px_rgba(212,175,55,0.3)] transition-transform hover:-translate-y-0.5" aria-label="Prendre RDV">
+            <a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="lg:!hidden bg-accent-primary text-white w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full shadow-[0_5px_20px_rgba(212,175,55,0.3)] transition-transform hover:-translate-y-0.5 shrink-0" aria-label="Prendre RDV">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             </a>
             <button 
-              className="lg:hidden w-9 h-9 flex items-center justify-center text-text-main hover:text-accent-secondary transition-colors" 
+              className="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-text-main hover:text-accent-secondary transition-colors shrink-0" 
               aria-label="Menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -114,7 +114,11 @@ export function MainLayout({ children }: MainLayoutProps) {
               <span className="text-[0.95em] font-medium tracking-wide">Syndicat des Métiers de l'Hypnose</span>
             </div>
             <p>&copy; 2026 G Hypnose. Tous droits réservés.</p>
-            <p>Cabinet situé au cœur de la sérénité. <a href="tel:+33698060008" className="text-accent-primary hover:underline ml-2 font-medium">06 98 06 00 08</a></p>
+            <p>Cabinet situé au cœur de la sérénité.</p>
+            <p className="flex items-center justify-center md:justify-start gap-2 mt-1">
+              <Phone className="w-4 h-4 text-accent-primary" />
+              <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">06 98 06 00 08</a>
+            </p>
             <p className="mt-2 text-[0.85em] opacity-80">Assurance Responsabilité Civile Professionnelle AXA Contrat n° 10389249304</p>
           </div>
           
