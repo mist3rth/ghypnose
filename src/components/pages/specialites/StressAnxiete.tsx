@@ -26,7 +26,7 @@ export function StressAnxiete() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="glass-card p-8 mb-12 border-accent-secondary/20">
+          <div className="bg-white/5 backdrop-blur-[24px] border border-accent-secondary/20 rounded-3xl p-8 mb-12">
             <h2 className="text-2xl font-title font-semibold text-white mb-6 flex items-center gap-3">
               <Brain className="text-accent-secondary w-6 h-6" /> Agir sur les causes profondes
             </h2>
