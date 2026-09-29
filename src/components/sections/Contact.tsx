@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Phone, Mail } from 'lucide-react';
 
 export function Contact() {
   const [step, setStep] = useState(1);
@@ -37,18 +38,24 @@ export function Contact() {
   return (
     <section id="contact" className="py-[clamp(4rem,10vw,8rem)] px-4">
       <div className="max-w-[700px] mx-auto">
-        <div className="glass-card p-6 md:p-12 overflow-hidden">
+        <div className="bg-white/5 backdrop-blur-[24px] border border-accent-primary/15 rounded-3xl p-6 md:p-12 overflow-hidden">
           <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
             Contactez moi
           </h2>
           
           <div className="text-center mb-10 text-text-muted leading-[1.8]">
             <p><strong>Adresse :</strong> 27, Boulevard Magenta 75010 Paris</p>
-            <p className="flex items-center justify-center gap-4 mt-2">
-              <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">+(33) 6 98 06 00 08</a>
-              <span className="text-white/20">|</span>
-              <a href="mailto:gregfitoussi@gmail.com" className="text-accent-primary hover:underline font-medium">gregfitoussi@gmail.com</a>
-            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-2">
+              <a href="tel:+33698060008" className="flex items-center gap-2 text-accent-primary hover:underline font-medium">
+                <Phone className="w-4 h-4" />
+                +(33) 6 98 06 00 08
+              </a>
+              <span className="hidden sm:inline text-white/20">|</span>
+              <a href="mailto:gregfitoussi@gmail.com" className="flex items-center gap-2 text-accent-primary hover:underline font-medium">
+                <Mail className="w-4 h-4" />
+                gregfitoussi@gmail.com
+              </a>
+            </div>
           </div>
 
           {/* Progress Bar */}

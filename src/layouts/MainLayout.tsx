@@ -57,7 +57,17 @@ export function MainLayout() {
 
       <header>
         <nav className="glass-nav fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-[1200px] z-50 flex justify-between items-center px-4 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all">
-          <Link to="/" className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.history.pushState(null, '', '/');
+              }
+            }}
+          >
             <img src="/images/logo-transparent.webp" alt="G Hypnose Logo" className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" width="36" height="36" />
             <span className="font-semibold text-base sm:text-[1.15rem] text-text-main tracking-wide group-hover:text-accent-secondary transition-colors truncate">GHypnose</span>
           </Link>

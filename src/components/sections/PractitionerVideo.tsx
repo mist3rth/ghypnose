@@ -81,7 +81,7 @@ export function PractitionerVideo() {
             <div className="relative w-full max-w-[340px] md:max-w-[380px] aspect-[9/16] rounded-3xl overflow-hidden glass-card shadow-2xl shadow-accent-primary/5 group border border-white/5 bg-background-alt">
               <video 
                 ref={videoRef}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
                 loop 
                 playsInline 
                 muted
