@@ -1,14 +1,17 @@
-import type { ReactNode } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Phone } from 'lucide-react';
 
-interface MainLayoutProps {
-  children: ReactNode;
-}
-
-export function MainLayout({ children }: MainLayoutProps) {
+export function MainLayout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,10 +57,10 @@ export function MainLayout({ children }: MainLayoutProps) {
 
       <header>
         <nav className="glass-nav fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-[1200px] z-50 flex justify-between items-center px-4 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all">
-          <a href="/" className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0">
+          <Link to="/" className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0">
             <img src="/images/logo-transparent.webp" alt="G Hypnose Logo" className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" width="36" height="36" />
             <span className="font-semibold text-base sm:text-[1.15rem] text-text-main tracking-wide group-hover:text-accent-secondary transition-colors truncate">GHypnose</span>
-          </a>
+          </Link>
           
           <ul className="hidden lg:flex list-none gap-[clamp(1rem,2.5vw,2.5rem)] items-center m-0 p-0">
             <li><a href="/#about" onClick={(e) => handleNavClick(e, '#about')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">À propos</a></li>
@@ -104,7 +107,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         </div>
       </div>
 
-      <main>{children}</main>
+      <main><Outlet /></main>
 
       <footer className="mt-20 py-16 px-4 bg-[#0a0a1a]/80 border-t border-white/10 backdrop-blur-xl">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center text-text-muted text-[0.9rem] gap-8 text-center md:text-left">
@@ -123,8 +126,8 @@ export function MainLayout({ children }: MainLayoutProps) {
           </div>
           
           <nav className="flex items-center gap-8">
-            <a href="/mentions-legales" className="hover:text-accent-secondary transition-colors">Mentions Légales</a>
-            <a href="/rgpd" className="hover:text-accent-secondary transition-colors">RGPD</a>
+            <Link to="/mentions-legales" className="hover:text-accent-secondary transition-colors">Mentions Légales</Link>
+            <Link to="/rgpd" className="hover:text-accent-secondary transition-colors">RGPD</Link>
             <div className="flex gap-4 items-center pl-4 ml-4 border-l border-white/10">
               {/* <a href="#" className="hover:text-accent-secondary transition-colors"><FaFacebook size={20} /></a> */}
               <a href="#" className="hover:text-accent-secondary transition-colors" aria-label="Instagram">

@@ -10,6 +10,8 @@
   --font-title: "Cormorant Garamond", serif;
   --font-body: "Inter", sans-serif;
   --font-accent: "Playfair Display", serif;
+
+  --animate-marquee: marquee 40s linear infinite;
 }
 
 @layer base {

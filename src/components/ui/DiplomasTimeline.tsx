@@ -69,6 +69,8 @@ export function DiplomasTimeline() {
                     <img 
                       src={diploma.img} 
                       alt={diploma.title} 
+                      width="458"
+                      height="462"
                       className="w-full h-auto object-cover group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 ease-out saturate-50 group-hover:saturate-100" 
                       loading="lazy" 
                     />

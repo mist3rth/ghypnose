@@ -1,6 +1,13 @@
+import { Helmet } from 'react-helmet-async';
+
 export function RGPD() {
   return (
     <div className="pt-[150px] min-h-[80vh] px-4 pb-20">
+      <Helmet>
+        <title>Politique de Confidentialité (RGPD) | G Hypnose</title>
+        <meta name="description" content="Découvrez notre politique de confidentialité et la gestion de vos données personnelles sur le site G Hypnose." />
+        <link rel="canonical" href="https://www.ghypnose.fr/rgpd" />
+      </Helmet>
       <section className="max-w-[800px] mx-auto glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10 animate-fade-in">
         <h1 className="text-[clamp(2rem,5vw,3rem)] font-title text-center mb-12 bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent">
           Politique de Confidentialité (RGPD)
@@ -52,7 +59,7 @@ export function RGPD() {
             <p>
               Conformément à la loi « Informatique et Libertés » et au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données à caractère personnel : droit d'accès, droit de rectification, droit à l'effacement, et droit à la limitation du traitement.
               <br /><br />
-              Pour toute demande relative à vos données, nous vous invitons à nous contacter à : <a href="mailto:gregfitoussi@gmail.com" className="text-accent-primary hover:underline transition-all">gregfitoussi@gmail.com</a>.
+              Pour toute demande relative à vos données, nous vous invitons à nous contacter à : <a href="mailto:gregfitoussi@gmail.com" className="text-accent-primary underline hover:text-white transition-all">gregfitoussi@gmail.com</a>.
             </p>
           </div>
           

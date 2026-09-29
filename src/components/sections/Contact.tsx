@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Contact() {
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    civility: '',
     firstname: '',
     lastname: '',
     email: '',
@@ -19,6 +22,9 @@ export function Contact() {
     }));
   };
 
+  const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
+  const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Logic for form submission
@@ -27,72 +33,182 @@ export function Contact() {
   };
 
   const inputClasses = "w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-4 text-white text-base transition-all focus:bg-white/10 focus:border-accent-secondary focus:outline-none focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]";
-  const labelClasses = "block text-[0.95rem] font-medium text-text-main mb-2";
 
   return (
     <section id="contact" className="py-[clamp(4rem,10vw,8rem)] px-4">
       <div className="max-w-[700px] mx-auto">
-        
-        <div className="glass-card p-6 md:p-12">
-          <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-6 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
+        <div className="glass-card p-6 md:p-12 overflow-hidden">
+          <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
             Contactez moi
           </h2>
           
           <div className="text-center mb-10 text-text-muted leading-[1.8]">
             <p><strong>Adresse :</strong> 27, Boulevard Magenta 75010 Paris</p>
-            <p><strong>Téléphone :</strong> <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">+(33) 6 98 06 00 08</a></p>
-            <p><strong>Email :</strong> <a href="mailto:gregfitoussi@gmail.com" className="text-accent-primary hover:underline font-medium">gregfitoussi@gmail.com</a></p>
+            <p className="flex items-center justify-center gap-4 mt-2">
+              <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">+(33) 6 98 06 00 08</a>
+              <span className="text-white/20">|</span>
+              <a href="mailto:gregfitoussi@gmail.com" className="text-accent-primary hover:underline font-medium">gregfitoussi@gmail.com</a>
+            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1">
-                <label htmlFor="lastname" className={labelClasses}>Nom</label>
-                <input type="text" id="lastname" name="lastname" required placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
-              </div>
-              <div className="flex-1">
-                <label htmlFor="firstname" className={labelClasses}>Prénom</label>
-                <input type="text" id="firstname" name="firstname" required placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
-              </div>
+          {/* Progress Bar */}
+          <div className="mb-8">
+            <div className="flex justify-between text-sm text-text-muted mb-2 font-medium px-1">
+              <span>Étape {step} sur 3</span>
+              <span className="text-accent-secondary">{step === 1 ? "Le motif" : step === 2 ? "Votre message" : "Vos coordonnées"}</span>
             </div>
-
-            <div>
-              <label htmlFor="email" className={labelClasses}>Email</label>
-              <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" value={formData.email} onChange={handleChange} className={inputClasses} />
+            <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
+                initial={{ width: "33%" }}
+                animate={{ width: `${(step / 3) * 100}%` }}
+                transition={{ duration: 0.3 }}
+              />
             </div>
+          </div>
 
-            <div>
-              <label htmlFor="phone" className={labelClasses}>Téléphone</label>
-              <input type="tel" id="phone" name="phone" placeholder="Ex: 06 12 34 56 78" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" value={formData.phone} onChange={handleChange} className={inputClasses} />
-            </div>
+          <form onSubmit={handleSubmit} className="relative min-h-[380px] flex flex-col">
+            <AnimatePresence mode="wait">
+              {step === 1 && (
+                <motion.div 
+                  key="step1"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col gap-6 flex-1"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-2">Quel est le motif de votre consultation ?</h3>
+                  <div>
+                    <select name="subject" required value={formData.subject} onChange={handleChange} className={inputClasses}>
+                      <option value="" disabled>Choisissez un motif dans la liste...</option>
+                      <option value="stress" className="bg-[#050b14] text-white">Stress & Anxiété</option>
+                      <option value="tabac" className="bg-[#050b14] text-white">Arrêt Tabac</option>
+                      <option value="confiance" className="bg-[#050b14] text-white">Confiance en soi</option>
+                      <option value="autre" className="bg-[#050b14] text-white">Autre demande</option>
+                    </select>
+                  </div>
+                  
+                  <div className="mt-auto pt-6 flex justify-end">
+                    <button 
+                      type="button" 
+                      onClick={nextStep}
+                      disabled={!formData.subject}
+                      className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold py-3 px-8 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer hover:-translate-y-1 transition-all"
+                    >
+                      Continuer
+                    </button>
+                  </div>
+                </motion.div>
+              )}
 
-            <div>
-              <label htmlFor="subject" className={labelClasses}>Objet</label>
-              <select id="subject" name="subject" required value={formData.subject} onChange={handleChange} className={inputClasses}>
-                <option value="" disabled>Choisissez un motif</option>
-                <option value="stress" className="bg-[#050b14] text-white">Stress & Anxiété</option>
-                <option value="tabac" className="bg-[#050b14] text-white">Arrêt Tabac</option>
-                <option value="confiance" className="bg-[#050b14] text-white">Confiance en soi</option>
-                <option value="autre" className="bg-[#050b14] text-white">Autre demande</option>
-              </select>
-            </div>
+              {step === 2 && (
+                <motion.div 
+                  key="step2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col gap-6 flex-1"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-2">Comment puis-je vous aider ?</h3>
+                  <div className="flex-1 flex flex-col">
+                    <textarea 
+                      name="message" 
+                      rows={6} 
+                      required 
+                      placeholder="Décrivez brièvement votre situation ou votre objectif. N'hésitez pas, je suis là pour vous écouter..." 
+                      value={formData.message} 
+                      onChange={handleChange} 
+                      className={`${inputClasses} flex-1 resize-none`}
+                    ></textarea>
+                  </div>
+                  
+                  <div className="mt-auto pt-6 flex justify-between">
+                    <button 
+                      type="button" 
+                      onClick={prevStep}
+                      className="border border-white/20 text-white font-semibold py-3 px-8 rounded-full hover:bg-white/5 cursor-pointer transition-all"
+                    >
+                      Retour
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={nextStep}
+                      disabled={!formData.message.trim()}
+                      className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold py-3 px-8 rounded-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer hover:-translate-y-1 transition-all"
+                    >
+                      Continuer
+                    </button>
+                  </div>
+                </motion.div>
+              )}
 
-            <div>
-              <label htmlFor="message" className={labelClasses}>Message</label>
-              <textarea id="message" name="message" rows={5} required placeholder="Décrivez brièvement votre situation ou votre objectif. N'hésitez pas, je suis là pour vous écouter..." value={formData.message} onChange={handleChange} className={inputClasses}></textarea>
-            </div>
+              {step === 3 && (
+                <motion.div 
+                  key="step3"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col gap-6 flex-1"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-2">Presque terminé ! Vos coordonnées</h3>
+                  
+                  <div className="flex gap-6">
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <input type="radio" name="civility" value="Mme" checked={formData.civility === 'Mme'} onChange={handleChange} required className="w-5 h-5 accent-accent-primary" />
+                      <span className="text-text-main group-hover:text-white transition-colors">Mme</span>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <input type="radio" name="civility" value="M." checked={formData.civility === 'M.'} onChange={handleChange} required className="w-5 h-5 accent-accent-primary" />
+                      <span className="text-text-main group-hover:text-white transition-colors">M.</span>
+                    </label>
+                  </div>
 
-            <div className="flex items-start gap-4 mt-4 mb-2">
-              <input type="checkbox" id="rgpdConsent" name="rgpdConsent" required checked={formData.rgpdConsent} onChange={handleChange} className="mt-1 cursor-pointer w-5 h-5" />
-              <label htmlFor="rgpdConsent" className="text-[0.85rem] text-text-muted leading-relaxed font-normal cursor-pointer">
-                En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de ma demande de contact et de la relation commerciale qui peut en découler. Pour en savoir plus, consultez la <a href="/rgpd" className="text-accent-secondary hover:underline">politique de confidentialité</a>.
-              </label>
-            </div>
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                      <input type="text" name="lastname" required placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
+                    </div>
+                    <div className="flex-1">
+                      <input type="text" name="firstname" required placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
+                    </div>
+                  </div>
 
-            <button type="submit" className="w-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold text-[1.1rem] py-4 px-6 rounded-full mt-4 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.5)] transition-all duration-400">
-              Envoyer ma demande
-            </button>
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                      <input type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" value={formData.email} onChange={handleChange} className={inputClasses} />
+                    </div>
+                    <div className="flex-1">
+                      <input type="tel" name="phone" placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" value={formData.phone} onChange={handleChange} className={inputClasses} />
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 mt-2">
+                    <input type="checkbox" id="rgpdConsent" name="rgpdConsent" required checked={formData.rgpdConsent} onChange={handleChange} className="mt-1 cursor-pointer w-5 h-5 accent-accent-primary shrink-0 rounded" />
+                    <label htmlFor="rgpdConsent" className="text-[0.85rem] text-text-muted leading-relaxed font-normal cursor-pointer">
+                      J'accepte que ces informations soient exploitées dans le cadre de ma demande. <a href="/rgpd" className="text-accent-secondary hover:underline" target="_blank" rel="noopener noreferrer">Politique de confidentialité</a>.
+                    </label>
+                  </div>
+                  
+                  <div className="mt-auto pt-6 flex justify-between">
+                    <button 
+                      type="button" 
+                      onClick={prevStep}
+                      className="border border-white/20 text-white font-semibold py-3 px-8 rounded-full hover:bg-white/5 cursor-pointer transition-all"
+                    >
+                      Retour
+                    </button>
+                    <button 
+                      type="submit" 
+                      className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold py-3 px-8 rounded-full cursor-pointer hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.5)] transition-all"
+                    >
+                      Envoyer ma demande
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </form>
         </div>
       </div>

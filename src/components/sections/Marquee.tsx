@@ -23,7 +23,7 @@ export function Marquee() {
         The marquee animation moves the content to the left by 50% of its width. 
         We duplicate the content so it forms a seamless loop.
       */}
-      <div className="flex whitespace-nowrap w-max" style={{ animation: 'marquee 25s linear infinite' }}>
+      <div className="flex whitespace-nowrap w-max animate-marquee lg:hover:[animation-play-state:paused]">
         {content}
         {content}
         {content}
