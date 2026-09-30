@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, ExternalLink } from 'lucide-react';
 
 export function MainLayout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -127,7 +127,10 @@ export function MainLayout() {
               <span className="text-[0.95em] font-medium tracking-wide">Syndicat des Métiers de l'Hypnose</span>
             </div>
             <p>&copy; 2026 G Hypnose. Tous droits réservés.</p>
-            <p>Cabinet situé au cœur de la sérénité.</p>
+            <p className="mt-1 text-[0.9em] opacity-90 flex items-center justify-center md:justify-start gap-1">
+              Made by <a href="https://present-me-lake.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors inline-flex items-center gap-1 font-medium">T.THIESSON <ExternalLink className="w-3 h-3" /></a>
+            </p>
+            <p className="mt-2">Cabinet situé au cœur de la sérénité.</p>
             <p className="flex items-center justify-center md:justify-start gap-2 mt-1">
               <Phone className="w-4 h-4 text-accent-primary" />
               <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">06 98 06 00 08</a>

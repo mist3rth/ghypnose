@@ -10,7 +10,7 @@ export function TroublesSommeil() {
       
       <Helmet>
         <title>Hypnose angoisse nocturne & insomnie Paris 10</title>
-        <meta name="description" content="Traiter les troubles du sommeil, insomnies et angoisses nocturnes par l'hypnose à Paris. Retrouvez des nuits paisibles et réparatrices." />
+        <meta name="description" content="Apaiser les troubles du sommeil, insomnies et angoisses nocturnes par l'hypnose à Paris. Retrouvez des nuits paisibles et réparatrices." />
         <link rel="canonical" href="https://www.ghypnose.fr/specialites/troubles-sommeil" />
       </Helmet>
 
