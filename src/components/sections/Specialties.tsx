@@ -1,4 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
+import LinearReveal from '../ui/LinearReveal';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -34,9 +35,13 @@ export function Specialties() {
     <section id="specialites" className="py-[clamp(4rem,10vw,8rem)] px-4 relative overflow-hidden bg-background-alt">
       <div className="max-w-[1200px] mx-auto">
         <FadeIn direction="up">
-          <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center text-white font-title font-semibold">
-            Domaines d'intervention
-          </h2>
+          <LinearReveal
+            Text="Domaines d'intervention"
+            as="h2"
+            delay={0.2}
+            className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center font-title font-semibold flex flex-wrap justify-center"
+            colorClass="text-white"
+          />
           <p className="text-center text-text-muted mb-16 max-w-2xl mx-auto text-lg">
             Des accompagnements ciblés pour répondre à vos problématiques spécifiques.
           </p>

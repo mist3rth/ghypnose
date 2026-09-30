@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import LinearReveal from '../ui/LinearReveal';
 import { useRef } from 'react';
 import { DiplomasTimeline } from '../ui/DiplomasTimeline';
 
@@ -30,9 +31,13 @@ export function About() {
         </div>
         
         <div className="w-full md:w-3/5 text-center md:text-left">
-          <h2 className="text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] mb-6 bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
-            À propos de G Hypnose
-          </h2>
+          <LinearReveal
+            Text="À propos de GHypnose"
+            as="h2"
+            delay={0.2}
+            className="text-[60px] leading-[1.1] mb-6 font-title font-semibold flex flex-wrap justify-center md:justify-start"
+            colorClass="bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent"
+          />
           <h3 className="text-accent-primary font-title text-2xl mb-4">
             Grégory Fitoussi - Praticien en hypnose Ericksonienne & Réflexologie Plantaire
           </h3>

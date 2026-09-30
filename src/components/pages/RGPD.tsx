@@ -4,8 +4,8 @@ export function RGPD() {
   return (
     <div className="pt-[150px] min-h-[80vh] px-4 pb-20">
       <Helmet>
-        <title>Politique de Confidentialité (RGPD) | G Hypnose</title>
-        <meta name="description" content="Découvrez notre politique de confidentialité et la gestion de vos données personnelles sur le site G Hypnose." />
+        <title>Politique de Confidentialité (RGPD) | GHypnose</title>
+        <meta name="description" content="Découvrez notre politique de confidentialité et la gestion de vos données personnelles sur le site GHypnose." />
         <link rel="canonical" href="https://www.ghypnose.fr/rgpd" />
       </Helmet>
       <section className="max-w-[800px] mx-auto glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10 animate-fade-in">

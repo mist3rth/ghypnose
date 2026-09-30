@@ -4,8 +4,8 @@ export function Mentions() {
   return (
     <div className="pt-[150px] min-h-[80vh] px-4 pb-20">
       <Helmet>
-        <title>Mentions Légales | G Hypnose</title>
-        <meta name="description" content="Consultez les mentions légales du site G Hypnose - Grégory Fitoussi, praticien en Hypnose Ericksonienne à Paris." />
+        <title>Mentions Légales | GHypnose</title>
+        <meta name="description" content="Consultez les mentions légales du site GHypnose - Grégory Fitoussi, praticien en Hypnose Ericksonienne à Paris." />
         <link rel="canonical" href="https://www.ghypnose.fr/mentions-legales" />
       </Helmet>
       <section className="max-w-[800px] mx-auto glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10 animate-fade-in">
@@ -17,7 +17,7 @@ export function Mentions() {
           <div>
             <h2 className="text-accent-primary font-title text-2xl mb-4">1. Éditeur du site</h2>
             <p>
-              <strong>G Hypnose - Grégory Fitoussi</strong><br />
+              <strong>GHypnose - Grégory Fitoussi</strong><br />
               27, Boulevard Magenta<br />
               75010 Paris<br />
               Téléphone : <a href="tel:+33698060008" className="text-accent-primary underline hover:text-white transition-all">+(33) 6 98 06 00 08</a><br />

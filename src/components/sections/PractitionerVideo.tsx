@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import LinearReveal from '../ui/LinearReveal';
 import { Volume2, VolumeX } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
 
@@ -56,11 +57,21 @@ export function PractitionerVideo() {
           
           <div className="flex-1 space-y-6">
             <FadeIn>
-              <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] text-white font-title font-semibold leading-tight">
-                Une écoute attentive, <br/>
-                <span className="bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent">
-                  une approche sur-mesure.
-                </span>
+              <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] font-title font-semibold leading-tight flex flex-col items-center lg:items-start">
+                <LinearReveal
+                  Text="Une écoute attentive,"
+                  as="div"
+                  delay={0.2}
+                  className="text-white flex flex-wrap justify-center lg:justify-start"
+                  colorClass="text-white"
+                />
+                <LinearReveal
+                  Text="une approche sur-mesure."
+                  as="div"
+                  delay={0.6}
+                  className="flex flex-wrap justify-center lg:justify-start"
+                  colorClass="bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent"
+                />
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>

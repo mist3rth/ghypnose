@@ -68,7 +68,7 @@ export function MainLayout() {
               }
             }}
           >
-            <img src="/images/logo-transparent.webp" alt="G Hypnose Logo" className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" width="36" height="36" />
+            <img src="/images/logo-transparent.webp" alt="GHypnose Logo" className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" width="36" height="36" />
             <span className="font-semibold text-base sm:text-[1.15rem] text-text-main tracking-wide group-hover:text-accent-secondary transition-colors truncate">GHypnose</span>
           </Link>
           
@@ -126,7 +126,7 @@ export function MainLayout() {
               <img src="/images/logo-sdmh.webp" alt="Logo SDMH" width="40" height="40" className="h-10 w-auto invert brightness-0" />
               <span className="text-[0.95em] font-medium tracking-wide">Syndicat des Métiers de l'Hypnose</span>
             </div>
-            <p>&copy; 2026 G Hypnose. Tous droits réservés.</p>
+            <p>&copy; 2026 GHypnose. Tous droits réservés.</p>
             <p className="mt-1 text-[0.9em] opacity-90 flex items-center justify-center md:justify-start gap-1">
               Made by <a href="https://present-me-lake.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors inline-flex items-center gap-1 font-medium">T.THIESSON <ExternalLink className="w-3 h-3" /></a>
             </p>

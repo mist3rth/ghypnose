@@ -49,7 +49,7 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>G Hypnose | Cabinet d'hypnose Ericksonienne à Paris</title>
+        <title>GHypnose | Cabinet d'hypnose Ericksonienne à Paris</title>
         <meta name="description" content="Grégory Fitoussi - Praticien en Hypnose Ericksonienne à Paris. Un accompagnement sur-mesure pour gérer stress, phobies et arrêt du tabac." />
         <link rel="canonical" href="https://www.ghypnose.fr/" />
       </Helmet>

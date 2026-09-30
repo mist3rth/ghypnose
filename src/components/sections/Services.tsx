@@ -1,4 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
+import LinearReveal from '../ui/LinearReveal';
 import { Gift, ArrowRight } from 'lucide-react';
 
 export function Services() {
@@ -9,9 +10,13 @@ export function Services() {
 
       <div className="max-w-[1200px] mx-auto">
         <FadeIn direction="up">
-          <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
-            Mes Accompagnements & Offres
-          </h2>
+          <LinearReveal
+            Text="Mes Accompagnements & Offres"
+            as="h2"
+            delay={0.2}
+            className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center font-title font-semibold flex flex-wrap justify-center"
+            colorClass="bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent"
+          />
           <p className="text-center text-text-muted mb-16 max-w-2xl mx-auto text-lg">
             Des séances sur-mesure pour vous accompagner vers le changement, à votre rythme.
           </p>

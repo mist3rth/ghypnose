@@ -1,10 +1,16 @@
+import LinearReveal from '../ui/LinearReveal';
+
 export function Approach() {
   return (
     <section id="approach" className="py-[clamp(4rem,10vw,8rem)] px-4">
       <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-8 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
-          Pourquoi choisir l'Hypnose ?
-        </h2>
+        <LinearReveal
+          Text="Pourquoi choisir l'Hypnose ?"
+          as="h2"
+          delay={0.2}
+          className="text-[clamp(1.8rem,6vw,3rem)] mb-8 text-center font-title font-semibold flex flex-wrap justify-center"
+          colorClass="bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent"
+        />
         
         <p className="text-center text-text-muted mb-12 max-w-[800px] mx-auto">
           Plusieurs champs d'intervention forment la spécificité du praticien en hypnose d'accompagnement ou hypnologue.
