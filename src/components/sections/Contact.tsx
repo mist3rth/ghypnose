@@ -29,6 +29,20 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation JS stricte pour pallier aux bugs d'autocomplete des navigateurs
+    const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Le format du téléphone est invalide. 10 chiffres sont attendus (ex: 06 12 34 56 78).");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Le format de l'email est invalide.");
+      return;
+    }
+
     // Logic for form submission
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
