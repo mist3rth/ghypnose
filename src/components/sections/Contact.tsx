@@ -191,10 +191,12 @@ export function Contact() {
 
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1">
-                      <input type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" value={formData.email} onChange={handleChange} className={inputClasses} />
+                      <input type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse email valide" value={formData.email} onChange={handleChange} className={inputClasses} />
+                      <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : jean.dupont@email.com</span>
                     </div>
                     <div className="flex-1">
-                      <input type="tel" name="phone" placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" value={formData.phone} onChange={handleChange} className={inputClasses} />
+                      <input type="tel" name="phone" required placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" title="Format attendu : 10 chiffres (ex: 06 12 34 56 78)" value={formData.phone} onChange={handleChange} className={inputClasses} />
+                      <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : 06 12 34 56 78 (10 chiffres)</span>
                     </div>
                   </div>
 
