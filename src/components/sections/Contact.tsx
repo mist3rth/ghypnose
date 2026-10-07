@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Mail, CheckCircle2 } from 'lucide-react';
 
 export function Contact() {
   const [step, setStep] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     civility: '',
     firstname: '',
@@ -30,7 +31,7 @@ export function Contact() {
     e.preventDefault();
     // Logic for form submission
     console.log('Form submitted:', formData);
-    alert('Formulaire envoyé !');
+    setIsSubmitted(true);
   };
 
   const inputClasses = "w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-4 text-white text-base transition-all focus:bg-white/10 focus:border-accent-secondary focus:outline-none focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]";
@@ -44,22 +45,28 @@ export function Contact() {
           </h2>
           
           <div className="text-center mb-10 text-text-muted leading-[1.8]">
-            <p><strong>Adresse :</strong> 27, Boulevard Magenta 75010 Paris</p>
+            <p className="mb-4">
+              <strong>Cabinets :</strong><br />
+              27 Boulevard Magenta, 75010 Paris<br />
+              24 Rue Geoffroy-Saint-Hilaire, 75005 Paris
+            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-2">
               <a href="tel:+33698060008" className="flex items-center gap-2 text-accent-primary hover:underline font-medium">
                 <Phone className="w-4 h-4" />
                 +(33) 6 98 06 00 08
               </a>
               <span className="hidden sm:inline text-white/20">|</span>
-              <a href="mailto:gregfitoussi@gmail.com" className="flex items-center gap-2 text-accent-primary hover:underline font-medium">
+              <a href="mailto:Contact@ghypnose.fr" className="flex items-center gap-2 text-accent-primary hover:underline font-medium">
                 <Mail className="w-4 h-4" />
-                gregfitoussi@gmail.com
+                Contact@ghypnose.fr
               </a>
             </div>
           </div>
 
-          {/* Progress Bar */}
-          <div className="mb-8">
+          {!isSubmitted ? (
+            <>
+              {/* Progress Bar */}
+              <div className="mb-8">
             <div className="flex justify-between text-sm text-text-muted mb-2 font-medium px-1">
               <span>Étape {step} sur 3</span>
               <span className="text-accent-secondary">{step === 1 ? "Le motif" : step === 2 ? "Votre message" : "Vos coordonnées"}</span>
@@ -215,8 +222,37 @@ export function Contact() {
                   </div>
                 </motion.div>
               )}
-            </AnimatePresence>
-          </form>
+              </AnimatePresence>
+            </form>
+            </>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center text-center py-8 min-h-[380px] justify-center"
+            >
+              <div className="w-20 h-20 bg-accent-primary/20 rounded-full flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-10 h-10 text-accent-primary" />
+              </div>
+              <h3 className="text-2xl font-title font-semibold text-white mb-3">Demande envoyée avec succès !</h3>
+              <p className="text-text-muted mb-8 max-w-md leading-relaxed">
+                Merci <strong>{formData.firstname}</strong> pour votre message. Je vous recontacterai très prochainement.
+              </p>
+              <button 
+                onClick={() => {
+                  setIsSubmitted(false);
+                  setStep(1);
+                  setFormData({
+                    civility: '', firstname: '', lastname: '', email: '', phone: '', subject: '', message: '', rgpdConsent: false
+                  });
+                }}
+                className="border border-accent-primary/50 text-white font-medium py-3 px-8 rounded-full hover:bg-accent-primary/10 transition-colors cursor-pointer"
+              >
+                Nouvelle demande
+              </button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

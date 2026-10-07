@@ -55,8 +55,8 @@ export function MainLayout() {
       <div className="fixed w-[500px] h-[500px] rounded-full blur-[100px] -z-10 opacity-30 pointer-events-none bg-[radial-gradient(circle,var(--color-accent-primary)_0%,transparent_70%)] -top-[100px] -right-[100px] animate-[float_20s_infinite_alternate]"></div>
       <div className="fixed w-[500px] h-[500px] rounded-full blur-[100px] -z-10 opacity-30 pointer-events-none bg-[radial-gradient(circle,var(--color-accent-secondary)_0%,transparent_70%)] -bottom-[100px] -left-[100px] animate-[float_25s_infinite_alternate-reverse]"></div>
 
-      <header>
-        <nav className="glass-nav fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-[1200px] z-50 flex justify-between items-center px-4 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all">
+      <header className="fixed top-4 sm:top-6 left-0 w-full z-50 flex justify-center pointer-events-none px-4">
+        <nav className="glass-nav pointer-events-auto w-full max-w-[1200px] flex justify-between items-center px-4 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all">
           <Link 
             to="/" 
             className="flex items-center gap-2 sm:gap-2.5 no-underline select-none group min-w-0"
@@ -130,10 +130,14 @@ export function MainLayout() {
             <p className="mt-1 text-[0.9em] opacity-90 flex items-center justify-center md:justify-start gap-1">
               Made by <a href="https://present-me-lake.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors inline-flex items-center gap-1 font-medium">T.THIESSON <ExternalLink className="w-3 h-3" /></a>
             </p>
-            <p className="mt-2">Cabinet situé au cœur de la sérénité.</p>
-            <p className="flex items-center justify-center md:justify-start gap-2 mt-1">
+            <p className="mt-2 font-medium text-white/90">2 adresses pour mieux vous recevoir :</p>
+            <p className="mt-1 leading-relaxed">
+              27 Boulevard Magenta, 75010 Paris<br />
+              24 Rue Geoffroy-Saint-Hilaire, 75005 Paris
+            </p>
+            <p className="flex items-center justify-center md:justify-start gap-2 mt-2">
               <Phone className="w-4 h-4 text-accent-primary" />
-              <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">06 98 06 00 08</a>
+              <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">+(33) 6 98 06 00 08</a>
             </p>
             <p className="mt-2 text-[0.85em] opacity-80">Assurance Responsabilité Civile Professionnelle AXA Contrat n° 10389249304</p>
           </div>

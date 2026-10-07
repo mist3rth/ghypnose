@@ -16,7 +16,10 @@ export function Confiance() {
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
-          <Link to="/#specialites" className="text-accent-secondary hover:underline mb-8 inline-block">&larr; Retour à l'accueil</Link>
+          <div className="flex justify-between items-center mb-8 w-full">
+            <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
+            <Link to="/specialites/arret-tabac" className="text-accent-secondary hover:underline text-right">Arrêt du Tabac &rarr;</Link>
+          </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Renforcer sa <span className="text-accent-secondary">Confiance en soi</span> par l'Hypnose
           </h1>

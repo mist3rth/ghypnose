@@ -16,7 +16,10 @@ export function TroublesSommeil() {
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
-          <Link to="/#specialites" className="text-accent-secondary hover:underline mb-8 inline-block">&larr; Retour à l'accueil</Link>
+          <div className="flex justify-between items-center mb-8 w-full">
+            <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
+            <Link to="/specialites/confiance-en-soi" className="text-accent-secondary hover:underline text-right">Confiance en soi &rarr;</Link>
+          </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Hypnose pour les <span className="text-accent-primary">Troubles du Sommeil</span>
           </h1>
