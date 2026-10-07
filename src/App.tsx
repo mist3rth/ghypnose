@@ -52,6 +52,36 @@ function Home() {
         <title>GHypnose | Cabinet d'hypnose Ericksonienne à Paris</title>
         <meta name="description" content="Grégory Fitoussi - Praticien en Hypnose Ericksonienne à Paris. Un accompagnement sur-mesure pour gérer stress, phobies et arrêt du tabac." />
         <link rel="canonical" href="https://www.ghypnose.fr/" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "HealthAndBeautyBusiness",
+              "name": "GHypnose - Grégory Fitoussi",
+              "url": "https://www.ghypnose.fr/",
+              "telephone": "+33698060008",
+              "email": "Contact@ghypnose.fr",
+              "address": [
+                {
+                  "@type": "PostalAddress",
+                  "streetAddress": "27 Boulevard Magenta",
+                  "addressLocality": "Paris",
+                  "postalCode": "75010",
+                  "addressCountry": "FR"
+                },
+                {
+                  "@type": "PostalAddress",
+                  "streetAddress": "24 Rue Geoffroy-Saint-Hilaire",
+                  "addressLocality": "Paris",
+                  "postalCode": "75005",
+                  "addressCountry": "FR"
+                }
+              ],
+              "description": "Cabinet d'hypnose Ericksonienne à Paris. Grégory Fitoussi vous accompagne pour l'arrêt du tabac, la gestion du stress, les troubles du sommeil et la confiance en soi.",
+              "priceRange": "90€"
+            }
+          `}
+        </script>
       </Helmet>
       <Hero />
       <Marquee />

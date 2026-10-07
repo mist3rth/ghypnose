@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://g-hypnose.fr/sitemap.xml
+Sitemap: https://www.ghypnose.fr/sitemap.xml
