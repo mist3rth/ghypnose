@@ -22,6 +22,7 @@ const ArretTabac = lazy(() => import('./components/pages/specialites/ArretTabac'
 const StressAnxiete = lazy(() => import('./components/pages/specialites/StressAnxiete').then(module => ({ default: module.StressAnxiete })));
 const TroublesSommeil = lazy(() => import('./components/pages/specialites/TroublesSommeil').then(module => ({ default: module.TroublesSommeil })));
 const Confiance = lazy(() => import('./components/pages/specialites/Confiance').then(module => ({ default: module.Confiance })));
+const NotFound = lazy(() => import('./components/pages/NotFound').then(module => ({ default: module.NotFound })));
 
 const LoadingSpinner = () => (
   <div className="h-[200px] flex items-center justify-center">
@@ -154,6 +155,22 @@ export const routes: RouteRecord[] = [
         element: (
           <Suspense fallback={<div className="h-screen" />}>
             <Confiance />
+          </Suspense>
+        )
+      },
+      {
+        path: '404',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <NotFound />
+          </Suspense>
+        )
+      },
+      {
+        path: '*',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <NotFound />
           </Suspense>
         )
       }
