@@ -23,6 +23,12 @@ const StressAnxiete = lazy(() => import('./components/pages/specialites/StressAn
 const TroublesSommeil = lazy(() => import('./components/pages/specialites/TroublesSommeil').then(module => ({ default: module.TroublesSommeil })));
 const Confiance = lazy(() => import('./components/pages/specialites/Confiance').then(module => ({ default: module.Confiance })));
 
+// Articles
+const BlogIndex = lazy(() => import('./components/pages/articles/BlogIndex').then(module => ({ default: module.BlogIndex })));
+const ArticleTabac = lazy(() => import('./components/pages/articles/ArticleTabac').then(module => ({ default: module.ArticleTabac })));
+const ArticleSommeil = lazy(() => import('./components/pages/articles/ArticleSommeil').then(module => ({ default: module.ArticleSommeil })));
+const ArticleStress = lazy(() => import('./components/pages/articles/ArticleStress').then(module => ({ default: module.ArticleStress })));
+const ArticleConfiance = lazy(() => import('./components/pages/articles/ArticleConfiance').then(module => ({ default: module.ArticleConfiance })));
 const LoadingSpinner = () => (
   <div className="h-[200px] flex items-center justify-center">
     <div className="w-8 h-8 border-2 border-accent-primary border-t-transparent rounded-full animate-spin"></div>
@@ -154,6 +160,46 @@ export const routes: RouteRecord[] = [
         element: (
           <Suspense fallback={<div className="h-screen" />}>
             <Confiance />
+          </Suspense>
+        )
+      },
+      {
+        path: 'articles',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <BlogIndex />
+          </Suspense>
+        )
+      },
+      {
+        path: 'articles/combien-seances-hypnose-arret-tabac',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <ArticleTabac />
+          </Suspense>
+        )
+      },
+      {
+        path: 'articles/reveil-nocturne-3h-matin-hypnose',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <ArticleSommeil />
+          </Suspense>
+        )
+      },
+      {
+        path: 'articles/crise-angoisse-hypnose',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <ArticleStress />
+          </Suspense>
+        )
+      },
+      {
+        path: 'articles/syndrome-imposteur-hypnose',
+        element: (
+          <Suspense fallback={<div className="h-screen" />}>
+            <ArticleConfiance />
           </Suspense>
         )
       }

@@ -31,9 +31,13 @@ export function Contact() {
     e.preventDefault();
     
     // Validation JS stricte pour pallier aux bugs d'autocomplete des navigateurs
-    const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
-    if (!phoneRegex.test(formData.phone)) {
-      alert("Le format du téléphone est invalide. 10 chiffres sont attendus (ex: 06 12 34 56 78).");
+    // Validation JS stricte pour le téléphone (au moins 10 chiffres)
+    const digitsOnly = formData.phone.replace(/\D/g, '');
+    if (digitsOnly.length < 10 && !formData.phone.startsWith('+')) {
+      alert("Le format du téléphone est invalide. Au moins 10 chiffres sont attendus (ex: 06 12 34 56 78).");
+      return;
+    } else if (formData.phone.startsWith('+') && digitsOnly.length < 11) {
+      alert("Le format du téléphone international est invalide (ex: +33 6 12 34 56 78).");
       return;
     }
 
@@ -198,23 +202,23 @@ export function Contact() {
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1 flex flex-col">
                       <label htmlFor="lastname" className="sr-only">Votre nom</label>
-                      <input id="lastname" type="text" name="lastname" required placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
+                      <input id="lastname" type="text" name="lastname" required autoComplete="family-name" placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
                     </div>
                     <div className="flex-1 flex flex-col">
                       <label htmlFor="firstname" className="sr-only">Votre prénom</label>
-                      <input id="firstname" type="text" name="firstname" required placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
+                      <input id="firstname" type="text" name="firstname" required autoComplete="given-name" placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
                     </div>
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1 flex flex-col">
                       <label htmlFor="email" className="sr-only">Email</label>
-                      <input id="email" type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse email valide" value={formData.email} onChange={handleChange} className={inputClasses} />
+                      <input id="email" type="email" name="email" required autoComplete="email" placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse email valide" value={formData.email} onChange={handleChange} className={inputClasses} />
                       <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : jean.dupont@email.com</span>
                     </div>
                     <div className="flex-1 flex flex-col">
                       <label htmlFor="phone" className="sr-only">Téléphone</label>
-                      <input id="phone" type="tel" name="phone" required placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" title="Format attendu : 10 chiffres (ex: 06 12 34 56 78)" value={formData.phone} onChange={handleChange} className={inputClasses} />
+                      <input id="phone" type="tel" name="phone" required autoComplete="tel" placeholder="Téléphone" minLength={10} title="Format attendu : au moins 10 chiffres (ex: 06 12 34 56 78)" value={formData.phone} onChange={handleChange} className={inputClasses} />
                       <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : 06 12 34 56 78 (10 chiffres)</span>
                     </div>
                   </div>
