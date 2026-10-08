@@ -1,17 +1,45 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Phone, ExternalLink } from 'lucide-react';
+import Lenis from 'lenis';
 
 export function MainLayout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [lenis, setLenis] = useState<Lenis | null>(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
     if (!window.location.hash) {
-      window.scrollTo(0, 0);
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
-  }, [pathname]);
+  }, [pathname, lenis]);
+
+  useEffect(() => {
+    const l = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
+    setLenis(l);
+
+    function raf(time: number) {
+      l.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      l.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +50,11 @@ export function MainLayout() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Close mobile menu when screen resizes to desktop
@@ -40,11 +72,13 @@ export function MainLayout() {
     if (window.location.pathname === '/') {
       e.preventDefault();
       setIsMobileMenuOpen(false);
-      const element = document.querySelector(hash);
-      if (element) {
+      const element = document.querySelector(hash) as HTMLElement;
+      if (lenis && element) {
+        lenis.scrollTo(element, { offset: -120 });
+      } else if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', hash);
       }
+      window.history.pushState(null, '', hash);
     } else {
       setIsMobileMenuOpen(false);
     }
@@ -63,7 +97,11 @@ export function MainLayout() {
             onClick={(e) => {
               if (pathname === '/') {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (lenis) {
+                  lenis.scrollTo(0);
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
                 window.history.pushState(null, '', '/');
               }
             }}
