@@ -61,6 +61,26 @@ function doPost(e) {
       telephone
     ]);
 
+    // Envoi de l'email de notification
+    var emailTo = "contact@ghypnose.fr";
+    var emailSubject = "Nouvelle demande de contact - " + motif;
+    var emailBody = "Une nouvelle demande de contact a été soumise sur votre site web.\n\n" +
+                    "Date : " + date + "\n" +
+                    "Motif : " + motif + "\n" +
+                    "Civilité : " + civilite + "\n" +
+                    "Nom : " + nom + "\n" +
+                    "Prénom : " + prenom + "\n" +
+                    "Email : " + email + "\n" +
+                    "Téléphone : " + telephone + "\n\n" +
+                    "Message :\n" + text;
+                    
+    MailApp.sendEmail({
+      to: emailTo,
+      subject: emailSubject,
+      body: emailBody,
+      replyTo: email // Permet de faire "Répondre" directement au client
+    });
+
     // Retour d'une réponse de succès
     return ContentService.createTextOutput(
       JSON.stringify({ "result": "success" })
