@@ -120,8 +120,8 @@ export function MainLayout() {
       <main><Outlet /></main>
 
       <footer className="mt-20 py-16 px-4 bg-[#0a0a1a]/80 border-t border-white/10 backdrop-blur-xl">
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center text-text-muted text-[0.9rem] gap-8 text-center md:text-left">
-          <div>
+        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start text-text-muted text-[0.9rem] gap-12 text-center md:text-left">
+          <div className="md:max-w-[350px] mx-auto md:mx-0">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4 opacity-90">
               <img src="/images/logo-sdmh.webp" alt="Logo SDMH" width="40" height="40" className="h-10 w-auto invert brightness-0" />
               <span className="text-[0.95em] font-medium tracking-wide">Syndicat des Métiers de l'Hypnose</span>
@@ -130,7 +130,7 @@ export function MainLayout() {
             <p className="mt-1 text-[0.9em] opacity-90 flex items-center justify-center md:justify-start gap-1">
               Made by <a href="https://present-me-lake.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors inline-flex items-center gap-1 font-medium">T.THIESSON <ExternalLink className="w-3 h-3" /></a>
             </p>
-            <p className="mt-2 font-medium text-white/90">2 adresses pour mieux vous recevoir :</p>
+            <p className="mt-4 font-medium text-white/90">2 adresses pour mieux vous recevoir :</p>
             <p className="mt-1 leading-relaxed">
               27 Boulevard Magenta, 75010 Paris<br />
               24 Rue Geoffroy-Saint-Hilaire, 75005 Paris
@@ -139,19 +139,33 @@ export function MainLayout() {
               <Phone className="w-4 h-4 text-accent-primary" />
               <a href="tel:+33698060008" className="text-accent-primary hover:underline font-medium">+(33) 6 98 06 00 08</a>
             </p>
-            <p className="mt-2 text-[0.85em] opacity-80">Assurance Responsabilité Civile Professionnelle AXA Contrat n° 10389249304</p>
+            <p className="mt-4 text-[0.85em] opacity-80">Assurance Responsabilité Civile Professionnelle AXA Contrat n° 10389249304</p>
           </div>
           
-          <nav className="flex items-center gap-8">
-            <Link to="/mentions-legales" className="hover:text-accent-secondary transition-colors">Mentions Légales</Link>
-            <Link to="/rgpd" className="hover:text-accent-secondary transition-colors">RGPD</Link>
-            <div className="flex gap-4 items-center pl-4 ml-4 border-l border-white/10">
-              {/* <a href="#" className="hover:text-accent-secondary transition-colors"><FaFacebook size={20} /></a> */}
-              <a href="https://www.instagram.com/gregparis10ehypnose" target="_blank" rel="noopener noreferrer" className="hover:text-accent-secondary transition-colors" aria-label="Instagram">
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12.2 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
-              </a>
+          <div className="flex flex-col sm:flex-row gap-12 w-full md:w-auto mx-auto md:mx-0 text-center sm:text-left">
+            <div>
+              <h4 className="text-white font-medium mb-4">Domaines d'intervention</h4>
+              <nav className="flex flex-col gap-2">
+                <Link to="/specialites/arret-tabac" className="hover:text-accent-secondary transition-colors">Arrêt du Tabac</Link>
+                <Link to="/specialites/stress-anxiete" className="hover:text-accent-secondary transition-colors">Stress & Anxiété</Link>
+                <Link to="/specialites/troubles-sommeil" className="hover:text-accent-secondary transition-colors">Troubles du Sommeil</Link>
+                <Link to="/specialites/confiance-en-soi" className="hover:text-accent-secondary transition-colors">Confiance en soi</Link>
+              </nav>
             </div>
-          </nav>
+
+            <div>
+              <h4 className="text-white font-medium mb-4">Informations</h4>
+              <nav className="flex flex-col gap-2 items-center sm:items-start">
+                <Link to="/mentions-legales" className="hover:text-accent-secondary transition-colors">Mentions Légales</Link>
+                <Link to="/rgpd" className="hover:text-accent-secondary transition-colors">RGPD</Link>
+                <div className="mt-4">
+                  <a href="https://www.instagram.com/gregparis10ehypnose" target="_blank" rel="noopener noreferrer" className="hover:text-accent-secondary transition-colors inline-flex" aria-label="Instagram">
+                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12.2 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </footer>
 
