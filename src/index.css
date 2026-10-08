@@ -65,7 +65,7 @@
   }
   .btn-primary {
     background: var(--color-accent-primary);
-    color: white;
+    color: var(--color-bg-deep);
     box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
   }
   .btn-primary:hover {

@@ -106,9 +106,9 @@ export function Contact() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6 flex-1"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2">Quel est le motif de votre consultation ?</h3>
+                  <label htmlFor="subject" className="text-xl font-semibold text-white mb-2 block">Quel est le motif de votre consultation ?</label>
                   <div>
-                    <select name="subject" required value={formData.subject} onChange={handleChange} className={inputClasses}>
+                    <select id="subject" name="subject" required value={formData.subject} onChange={handleChange} className={inputClasses}>
                       <option value="" disabled>Choisissez un motif dans la liste...</option>
                       <option value="stress" className="bg-[#050b14] text-white">Stress & Anxiété</option>
                       <option value="tabac" className="bg-[#050b14] text-white">Arrêt Tabac</option>
@@ -139,9 +139,10 @@ export function Contact() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6 flex-1"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2">Comment puis-je vous aider ?</h3>
+                  <label htmlFor="message" className="text-xl font-semibold text-white mb-2 block">Comment puis-je vous aider ?</label>
                   <div className="flex-1 flex flex-col">
                     <textarea 
+                      id="message"
                       name="message" 
                       rows={6} 
                       required 
@@ -181,7 +182,7 @@ export function Contact() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6 flex-1"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2">Presque terminé ! Vos coordonnées</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2 block">Presque terminé ! Vos coordonnées</h3>
                   
                   <div className="flex gap-6">
                     <label className="flex items-center gap-3 cursor-pointer group">
@@ -195,21 +196,25 @@ export function Contact() {
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="flex-1">
-                      <input type="text" name="lastname" required placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
+                    <div className="flex-1 flex flex-col">
+                      <label htmlFor="lastname" className="sr-only">Votre nom</label>
+                      <input id="lastname" type="text" name="lastname" required placeholder="Votre nom" value={formData.lastname} onChange={handleChange} className={inputClasses} />
                     </div>
-                    <div className="flex-1">
-                      <input type="text" name="firstname" required placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
+                    <div className="flex-1 flex flex-col">
+                      <label htmlFor="firstname" className="sr-only">Votre prénom</label>
+                      <input id="firstname" type="text" name="firstname" required placeholder="Votre prénom" value={formData.firstname} onChange={handleChange} className={inputClasses} />
                     </div>
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-6">
-                    <div className="flex-1">
-                      <input type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse email valide" value={formData.email} onChange={handleChange} className={inputClasses} />
+                    <div className="flex-1 flex flex-col">
+                      <label htmlFor="email" className="sr-only">Email</label>
+                      <input id="email" type="email" name="email" required placeholder="Email" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse email valide" value={formData.email} onChange={handleChange} className={inputClasses} />
                       <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : jean.dupont@email.com</span>
                     </div>
-                    <div className="flex-1">
-                      <input type="tel" name="phone" required placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" title="Format attendu : 10 chiffres (ex: 06 12 34 56 78)" value={formData.phone} onChange={handleChange} className={inputClasses} />
+                    <div className="flex-1 flex flex-col">
+                      <label htmlFor="phone" className="sr-only">Téléphone</label>
+                      <input id="phone" type="tel" name="phone" required placeholder="Téléphone" pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" title="Format attendu : 10 chiffres (ex: 06 12 34 56 78)" value={formData.phone} onChange={handleChange} className={inputClasses} />
                       <span className="text-[0.75rem] text-white/50 ml-2 mt-1.5 block">Exemple : 06 12 34 56 78 (10 chiffres)</span>
                     </div>
                   </div>

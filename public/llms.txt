@@ -1,3 +1,8 @@
+---
+title: GHypnose
+description: Cabinet d'Hypnose Ericksonienne à Paris
+---
+
 # GHypnose - Cabinet d'Hypnose Ericksonienne à Paris
 
 > Grégory Fitoussi, Praticien en Hypnose Ericksonienne.
