@@ -5,6 +5,7 @@ import { FadeIn } from '../ui/FadeIn';
 
 export function PractitionerVideo() {
   const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Synchronise l'état "mute" avec l'élément vidéo
@@ -13,6 +14,24 @@ export function PractitionerVideo() {
       videoRef.current.muted = isMuted;
     }
   }, [isMuted]);
+
+  // Met à jour la barre de progression
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const handleTimeUpdate = () => {
+      if (videoElement.duration) {
+        setProgress((videoElement.currentTime / videoElement.duration) * 100);
+      }
+    };
+
+    videoElement.addEventListener('timeupdate', handleTimeUpdate);
+
+    return () => {
+      videoElement.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, []);
 
   // Optimisation de performance web : Intersection Observer
   // Ne joue la vidéo que lorsqu'elle est visible à l'écran pour économiser le GPU
@@ -105,10 +124,18 @@ export function PractitionerVideo() {
               {/* Overlay Gradient for contrast */}
               <div className="absolute inset-0 bg-gradient-to-t from-background-alt/90 via-transparent to-transparent pointer-events-none"></div>
               
+              {/* Progress Bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-white/20 z-20">
+                <div 
+                  className="h-full bg-accent-primary transition-all duration-100 ease-linear"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+
               {/* Sound Toggle Button */}
               <button 
                 onClick={toggleMute}
-                className="absolute bottom-6 right-6 p-4 rounded-full bg-background-alt/80 backdrop-blur-md border border-white/10 text-white hover:bg-accent-primary hover:border-accent-primary/50 transition-all duration-300 z-10 hover:scale-110 cursor-pointer"
+                className="absolute bottom-8 right-6 p-4 rounded-full bg-background-alt/80 backdrop-blur-md border border-white/10 text-white hover:bg-accent-primary hover:border-accent-primary/50 transition-all duration-300 z-10 hover:scale-110 cursor-pointer"
                 aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
               >
                 {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
@@ -116,7 +143,7 @@ export function PractitionerVideo() {
 
               {/* Tooltip hint */}
               {isMuted && (
-                <div className="absolute bottom-9 right-[5.5rem] text-sm font-medium text-white/90 bg-background-alt/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute bottom-11 right-[5.5rem] text-sm font-medium text-white/90 bg-background-alt/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   Activer le son
                 </div>
               )}
