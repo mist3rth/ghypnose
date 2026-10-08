@@ -108,7 +108,7 @@ export function PractitionerVideo() {
           </div>
 
           <FadeIn delay={0.3} className="flex-1 w-full flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[340px] md:max-w-[380px] aspect-[9/16] rounded-3xl overflow-hidden glass-card shadow-2xl shadow-accent-primary/5 group border border-white/5 bg-background-alt">
+            <div className="relative w-full max-w-[340px] md:max-w-[380px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl shadow-accent-primary/5 group border border-accent-primary/15 bg-[#050b14]">
               <video 
                 ref={videoRef}
                 className="absolute inset-0 w-full h-full object-cover"
