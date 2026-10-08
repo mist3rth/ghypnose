@@ -94,16 +94,19 @@ function doPost(e) {
 6. Une fenêtre "Déploiement mis à jour" s'affiche avec une URL sous **"URL de l'application Web"**. 
 7. **Copiez cette URL**. Elle commence par `https://script.google.com/macros/s/.../exec`.
 
-## Étape 4 : Relier l'URL au site web
+## Étape 4 : Relier l'URL au site web (Hébergement OVH)
 
-Cette URL doit maintenant être ajoutée aux paramètres de votre site web (dans Vercel).
+Puisque le site sera hébergé sur OVH, la variable d'environnement doit être intégrée au moment de la création de la version finale du site (le "build").
 
-1. Connectez-vous à votre compte **Vercel** et allez dans votre projet `ghypnose`.
-2. Allez dans l'onglet **"Settings"** > **"Environment Variables"**.
-3. Créez une nouvelle variable :
-   - **Key :** `VITE_GAS_WEBAPP_URL`
-   - **Value :** *Collez l'URL de l'application web que vous venez de copier à l'étape 3*
-4. Cliquez sur **Save**.
-5. **Important :** Pour que la variable soit prise en compte, vous devez relancer un déploiement dans Vercel (allez dans l'onglet "Deployments", cliquez sur les 3 points du dernier déploiement et choisissez "Redeploy").
+1. Ouvrez le code source de votre site (le dossier du projet sur votre ordinateur).
+2. À la racine du projet, créez ou ouvrez un fichier nommé `.env` (ou `.env.production`).
+3. Ajoutez-y la ligne suivante :
+   ```
+   VITE_GAS_WEBAPP_URL=Collez_ici_l_URL_copiée_a_l_etape_3
+   ```
+   *(Assurez-vous qu'il n'y a pas d'espace autour du `=`).*
+4. Sauvegardez le fichier.
+5. Générez la version finale du site en exécutant la commande de build (généralement `npm run build`).
+6. Transférez le contenu du dossier généré (`dist/` ou `build/`) sur votre hébergement OVH (via FTP, FileZilla, ou l'interface OVH).
 
 **C'est fait !** Votre formulaire est maintenant relié à votre Google Sheet. Chaque fois qu'un utilisateur soumettra une demande sur le site, une nouvelle ligne apparaîtra dans votre fichier.
