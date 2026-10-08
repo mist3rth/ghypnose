@@ -28,7 +28,7 @@ export function Contact() {
   const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation JS stricte pour pallier aux bugs d'autocomplete des navigateurs
