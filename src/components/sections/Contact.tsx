@@ -5,6 +5,7 @@ import { Phone, Mail, CheckCircle2 } from 'lucide-react';
 export function Contact() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     civility: '',
     firstname: '',
@@ -47,9 +48,39 @@ export function Contact() {
       return;
     }
 
-    // Logic for form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const formPayload = new FormData();
+      formPayload.append("Date", new Date().toLocaleString("fr-FR"));
+      formPayload.append("Motif", formData.subject);
+      formPayload.append("Text", formData.message);
+      formPayload.append("Civilité", formData.civility);
+      formPayload.append("Nom", formData.lastname);
+      formPayload.append("Prénom", formData.firstname);
+      formPayload.append("Email", formData.email);
+      formPayload.append("Téléphone", formData.phone);
+
+      // On utilise import.meta.env pour récupérer l'URL (définie dans le fichier .env ou sur Vercel)
+      const gasUrl = import.meta.env.VITE_GAS_WEBAPP_URL;
+
+      if (gasUrl) {
+        await fetch(gasUrl, {
+          method: 'POST',
+          body: formPayload,
+          mode: 'no-cors' // Requis pour éviter les erreurs CORS de Google Script
+        });
+      } else {
+        console.warn("VITE_GAS_WEBAPP_URL n'est pas défini. Les données ne sont pas envoyées vers Google Sheets.");
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Erreur lors de la soumission :', error);
+      alert("Une erreur est survenue lors de l'envoi de votre demande. Veuillez réessayer plus tard.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses = "w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-4 text-white text-base transition-all focus:bg-white/10 focus:border-accent-secondary focus:outline-none focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]";
@@ -240,9 +271,14 @@ export function Contact() {
                     </button>
                     <button 
                       type="submit" 
-                      className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold py-3 px-8 rounded-full cursor-pointer hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.5)] transition-all"
+                      disabled={isSubmitting}
+                      className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold py-3 px-8 rounded-full cursor-pointer hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.5)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[200px]"
                     >
-                      Envoyer ma demande
+                      {isSubmitting ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      ) : (
+                        "Envoyer ma demande"
+                      )}
                     </button>
                   </div>
                 </motion.div>
