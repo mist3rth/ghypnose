@@ -6,7 +6,7 @@ Ce guide vous explique comment configurer votre Google Sheet et créer le script
 
 1. Ouvrez Google Sheets (https://sheets.google.com) et créez un nouveau fichier.
 2. Nommez le fichier comme vous le souhaitez (ex: "Demandes Contact GHypnose").
-3. Renommez le premier onglet en **"Sheet1"** (c'est le nom par défaut, mais vérifiez qu'il s'appelle bien ainsi, sans espace).
+3. Vérifiez que le premier onglet s'appelle bien **"Feuille 1"** (c'est le nom par défaut en français, respectez l'espace). S'il s'appelle autrement, renommez-le.
 4. Sur la première ligne, ajoutez exactement les en-têtes suivants dans cet ordre (de A à H) :
    - Colonne A : `Date`
    - Colonne B : `Motif`
@@ -25,7 +25,7 @@ Ce guide vous explique comment configurer votre Google Sheet et créer le script
 2. Un nouvel onglet s'ouvre. Effacez tout le code présent et remplacez-le par le code suivant :
 
 ```javascript
-var SHEET_NAME = "Sheet1"; // Nom de l'onglet où les données seront enregistrées
+var SHEET_NAME = "Feuille 1"; // Nom de l'onglet où les données seront enregistrées
 
 function doPost(e) {
   try {
