@@ -66,16 +66,6 @@ export function ArretTabac() {
               Prendre rendez-vous <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-
-          <div className="bg-white/5 border border-accent-primary/20 rounded-2xl p-8 mt-12 text-center">
-            <h3 className="text-xl font-semibold text-white mb-4">Pour aller plus loin</h3>
-            <p className="mb-6 text-sm text-text-main">
-              Découvrez notre article détaillé sur le nombre de séances nécessaires pour arrêter de fumer.
-            </p>
-            <Link to="/articles/combien-seances-hypnose-arret-tabac" className="btn btn-secondary !py-2 !px-6 text-sm inline-block">
-              Lire l'article complet
-            </Link>
-          </div>
         </FadeIn>
       </div>
     </main>
