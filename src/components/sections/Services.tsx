@@ -26,7 +26,7 @@ export function Services() {
           
           <FadeIn delay={0.1} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
-              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
+              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500 pointer-events-none"></div>
 
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Adulte</h3>
@@ -38,7 +38,7 @@ export function Services() {
                 <li>Autonomisation</li>
               </ul>
               
-              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">
+              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5 relative z-10">
                 <span className="font-title text-xl font-bold text-accent-primary">90€</span>
                 <a href="/#contact" className="group/btn flex items-center gap-2 py-2.5 px-6 rounded-full bg-accent-primary/10 border border-accent-primary/30 text-accent-primary font-medium hover:bg-accent-primary hover:text-white transition-all duration-300">
                   Réserver <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -49,7 +49,7 @@ export function Services() {
 
           <FadeIn delay={0.2} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
-              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
+              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500 pointer-events-none"></div>
 
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Enfant & Ado</h3>
@@ -59,7 +59,7 @@ export function Services() {
                 <li>Aucune obligation de résultat</li>
               </ul>
               
-              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">
+              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5 relative z-10">
                 <span className="font-title text-xl font-bold text-accent-primary">70€</span>
                 <a href="/#contact" className="group/btn flex items-center gap-2 py-2.5 px-6 rounded-full bg-accent-primary/10 border border-accent-primary/30 text-accent-primary font-medium hover:bg-accent-primary hover:text-white transition-all duration-300">
                   Réserver <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -70,7 +70,7 @@ export function Services() {
 
           <FadeIn delay={0.3} className="h-full">
             <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(235,161,92,0.3)] transition-all duration-500 overflow-hidden border-accent-primary/20 hover:border-accent-primary/50">
-              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500"></div>
+              <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent-primary/10 rounded-full blur-3xl group-hover:bg-accent-primary/20 transition-colors duration-500 pointer-events-none"></div>
 
               
               <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-primary transition-colors">Réflexologie</h3>
@@ -80,7 +80,7 @@ export function Services() {
                 <li><em>Tarif ajusté si combiné avec hypnose</em></li>
               </ul>
               
-              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">
+              <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5 relative z-10">
                 <span className="font-title text-xl font-bold text-accent-primary">70€</span>
                 <a href="/#contact" className="group/btn flex items-center gap-2 py-2.5 px-6 rounded-full bg-accent-primary/10 border border-accent-primary/30 text-accent-primary font-medium hover:bg-accent-primary hover:text-white transition-all duration-300">
                   Réserver <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -106,7 +106,7 @@ export function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] mx-auto">
             <FadeIn delay={0.4} className="h-full">
               <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(255,107,107,0.2)] transition-all duration-500 overflow-hidden border-accent-secondary/20 hover:border-accent-secondary/50">
-                <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-accent-secondary/10 rounded-full blur-3xl group-hover:bg-accent-secondary/20 transition-colors duration-500"></div>
+                <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-accent-secondary/10 rounded-full blur-3xl group-hover:bg-accent-secondary/20 transition-colors duration-500 pointer-events-none"></div>
                 
                 <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-secondary transition-colors">Bon • Hypnose</h3>
                 <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
@@ -115,7 +115,7 @@ export function Services() {
                   <li>Un moyen original d'accompagner vos proches</li>
                 </ul>
                 
-                <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">
+                <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5 relative z-10">
                   <span className="font-title text-xl font-bold text-accent-secondary">70€</span>
                   <a href="/#contact" className="group/btn flex items-center gap-2 py-2.5 px-6 rounded-full bg-accent-secondary/10 border border-accent-secondary/30 text-accent-secondary font-medium hover:bg-accent-secondary hover:text-white transition-all duration-300">
                     Offrir <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -126,7 +126,7 @@ export function Services() {
 
             <FadeIn delay={0.5} className="h-full">
               <article className="glass-card relative flex flex-col p-8 group h-full hover:-translate-y-2 hover:shadow-[0_15px_40px_-15px_rgba(255,107,107,0.2)] transition-all duration-500 overflow-hidden border-accent-secondary/20 hover:border-accent-secondary/50">
-                <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-accent-secondary/10 rounded-full blur-3xl group-hover:bg-accent-secondary/20 transition-colors duration-500"></div>
+                <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-accent-secondary/10 rounded-full blur-3xl group-hover:bg-accent-secondary/20 transition-colors duration-500 pointer-events-none"></div>
                 
                 <h3 className="text-[1.6rem] mb-4 text-white font-title font-semibold group-hover:text-accent-secondary transition-colors">Bon • Réflexologie</h3>
                 <ul className="text-text-muted leading-[1.6] pl-[1.2rem] flex-1 list-disc text-[0.95rem] space-y-2 mb-8">
@@ -135,7 +135,7 @@ export function Services() {
                   <li>Idéal pour soulager le stress et les tensions</li>
                 </ul>
                 
-                <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5">
+                <div className="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-white/5 relative z-10">
                   <span className="font-title text-xl font-bold text-accent-secondary">70€</span>
                   <a href="/#contact" className="group/btn flex items-center gap-2 py-2.5 px-6 rounded-full bg-accent-secondary/10 border border-accent-secondary/30 text-accent-secondary font-medium hover:bg-accent-secondary hover:text-white transition-all duration-300">
                     Offrir <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
