@@ -20,7 +20,8 @@ export function SEOHead({
   schema,
 }: SEOHeadProps) {
   return (
-    <Head>
+    <>
+      <Head>
       <html lang="fr" />
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -43,12 +44,15 @@ export function SEOHead({
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage} />
 
-      {/* Structured Data (Schema.org JSON-LD) */}
+      </Head>
+
+      {/* Structured Data (Schema.org JSON-LD) - Émis directement dans le DOM pour compatibilité SSG parfaite */}
       {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} 
+        />
       )}
-    </Head>
+    </>
   );
 }

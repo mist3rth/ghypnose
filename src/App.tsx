@@ -8,6 +8,7 @@ import { Specialties } from './components/sections/Specialties';
 import { Services } from './components/sections/Services';
 import { Process } from './components/sections/Process';
 import { Testimonials } from './components/sections/Testimonials';
+import { FAQ, FAQ_DATA } from './components/sections/FAQ';
 import { Contact } from './components/sections/Contact';
 import { ParallaxBreak } from './components/sections/ParallaxBreak';
 
@@ -120,6 +121,19 @@ const homeSchema = {
   }
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_DATA.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+
 function Home() {
   return (
     <>
@@ -127,7 +141,7 @@ function Home() {
         title="GHypnose | Cabinet d'Hypnose Ericksonienne & Réflexologie à Paris"
         description="Grégory Fitoussi, praticien certifié en hypnose Ericksonienne à Paris 10 et Paris 5. Séances sur-mesure pour arrêt du tabac, stress, sommeil et confiance."
         canonical="https://www.ghypnose.fr/"
-        schema={homeSchema}
+        schema={[homeSchema, faqSchema]}
       />
       <Hero />
       <Marquee />
@@ -139,6 +153,7 @@ function Home() {
       <ParallaxBreak />
       <Process />
       <Testimonials />
+      <FAQ />
       <Contact />
     </>
   );
