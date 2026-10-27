@@ -116,6 +116,9 @@ export function PractitionerVideo() {
                 playsInline 
                 muted
                 preload="metadata"
+                width="720"
+                height="1280"
+                poster="/images/practitioner-video-poster.webp"
               >
                 <source src="/videos/output.webm" type="video/webm" />
                 <source src="/videos/output.mp4" type="video/mp4" />

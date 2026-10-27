@@ -1,23 +1,28 @@
----
-title: GHypnose
-description: Cabinet d'Hypnose Ericksonienne à Paris
----
-
 # GHypnose - Cabinet d'Hypnose Ericksonienne à Paris
 
-> Grégory Fitoussi, Praticien en Hypnose Ericksonienne.
+> Cabinet d'Hypnose Ericksonienne et de Réflexologie animé par Grégory Fitoussi à Paris 10 et Paris 5.
 
-## Spécialités
-- Arrêt du tabac
-- Gestion du stress et de l'anxiété
-- Troubles du sommeil
-- Confiance en soi
+Accompagnement thérapeutique personnalisé et bienveillant pour la gestion du stress, le sevrage tabagique, l'amélioration du sommeil et le développement de la confiance en soi.
 
-## Informations Pratiques
-- Cabinets : 27 Boulevard Magenta, 75010 Paris & 24 Rue Geoffroy-Saint-Hilaire, 75005 Paris
-- Téléphone : +(33) 6 98 06 00 08
+## Pages et Domaines d'Intervention
+
+- [Accueil GHypnose](https://www.ghypnose.fr/): Présentation générale du cabinet, méthode Ericksonienne, avis consultants et prise de rendez-vous.
+- [Arrêt du Tabac par Hypnose à Paris](https://www.ghypnose.fr/hypnose-arret-tabac-paris): Méthode d'accompagnement pour stopper la cigarette durablement, sans manque ni compensation.
+- [Gestion du Stress et de l'Anxiété à Paris](https://www.ghypnose.fr/hypnose-stress-anxiete-paris): Thérapie brève pour apaiser les tensions, angoisses, surcharge mentale et prévenir le burn-out.
+- [Troubles du Sommeil et Insomnies à Paris](https://www.ghypnose.fr/hypnose-sommeil-insomnie-paris): Solutions douces pour retrouver un sommeil réparateur et réguler les cycles nocturnes.
+- [Confiance en Soi et Affirmation à Paris](https://www.ghypnose.fr/hypnose-confiance-en-soi-paris): Protocole pour dépasser le syndrome de l'imposteur, la timidité et oser s'affirmer.
+
+## Informations Pratiques et Contact
+
+- [Prendre Rendez-vous en Ligne](https://www.ghypnose.fr/#contact): Formulaire de contact direct pour réserver votre séance en cabinet.
+- [Mentions Légales](https://www.ghypnose.fr/mentions-legales): Déontologie, mentions légales et cadre professionnel.
+- [Politique de Confidentialité RGPD](https://www.ghypnose.fr/rgpd): Protection et respect des données personnelles des consultants.
+
+## Coordonnées du Praticien
+
+- Praticien : Grégory Fitoussi (Hypnothérapeute certifié ARCHES, membre SDMH)
+- Cabinet Paris 10 : 27 Boulevard Magenta, 75010 Paris
+- Cabinet Paris 5 : 24 Rue Geoffroy-Saint-Hilaire, 75005 Paris
+- Téléphone : +33 6 98 06 00 08
 - Email : Contact@ghypnose.fr
-- Site web : https://www.ghypnose.fr
-
-## Approche
-Thérapie brève et douce orientée solutions. Un accompagnement bienveillant et sur-mesure pour vous aider à mobiliser vos ressources inconscientes (stress, anxiété, phobies, arrêt du tabac, troubles du sommeil).
+- Honoraires indicatifs : 90€ (Séance Adulte, 1h à 1h30) / 70€ (Enfant & Adolescent)

@@ -60,3 +60,14 @@
 - [x] Compiler en mode production (`npm run build`) avec succès (0 erreurs).
 - [x] Linter oxlint vérifié (0 erreurs).
 - [x] Inspection des fichiers statiques générés dans `dist/` (titres, metas, schemas et corps de texte vérifiés).
+
+## Phase 8 : UX Scroll, Calage Sous la Nav, Vidéos & llms.txt
+- [x] Calibrer le scroll des liens et CTA (`offset: 30` avec Lenis) pour que le contenu se cale immédiatement sous la nav (environ 25px sous la barre flottante, masquant le bandeau supérieur).
+- [x] Rétablir l'animation de smooth scroll pour tous les boutons CTA de la page d'accueil (`Hero`, `Services`, `ParallaxBreak`, etc.) via interception globale.
+- [x] Ajuster le padding de la section contact (`pt-16 md:pt-20` et `scroll-mt-20`) pour une mise en valeur directe du formulaire.
+- [x] Éliminer le saut/redimensionnement vidéo au chargement de la home :
+  - Extraction d'une image poster exacte pixel-par-pixel (`hero-fallback.webp` en 1280x720 16:9).
+  - Ajout des attributs `width="1280"` et `height="720"` et `preload="auto"` sur la vidéo hero.
+  - Ajout d'un poster dédié et dimensions sur `PractitionerVideo`.
+- [x] Mettre en conformité `public/llms.txt` avec les recommandations llmstxt.org / Lighthouse (H1, bloc de citation, liens Markdown obligatoires).
+

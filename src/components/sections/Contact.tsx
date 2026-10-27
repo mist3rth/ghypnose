@@ -86,7 +86,7 @@ export function Contact() {
   const inputClasses = "w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-4 text-white text-base transition-all focus:bg-white/10 focus:border-accent-secondary focus:outline-none focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]";
 
   return (
-    <section id="contact" className="py-[clamp(4rem,10vw,8rem)] px-4">
+    <section id="contact" className="pt-16 pb-24 md:pt-20 md:pb-32 px-4 scroll-mt-20">
       <div className="max-w-[700px] mx-auto">
         <div className="bg-white/5 backdrop-blur-[24px] border border-accent-primary/15 rounded-3xl p-6 md:p-12 overflow-hidden">
           <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">

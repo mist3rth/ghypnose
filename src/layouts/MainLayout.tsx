@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react';
 import { Phone, ExternalLink } from 'lucide-react';
 import Lenis from 'lenis';
 
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 export function MainLayout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,6 +35,7 @@ export function MainLayout() {
       touchMultiplier: 2,
     });
     setLenis(l);
+    window.__lenis = l;
 
     function raf(time: number) {
       l.raf(time);
@@ -37,6 +44,7 @@ export function MainLayout() {
     requestAnimationFrame(raf);
 
     return () => {
+      window.__lenis = undefined;
       l.destroy();
     };
   }, []);
@@ -68,21 +76,59 @@ export function MainLayout() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const scrollToTarget = (hash: string) => {
+    const element = document.querySelector(hash) as HTMLElement;
+    if (!element) return;
+
+    if (lenis) {
+      // Offset calibré pour caler le bloc haut sous la nav (+30px compense le padding de section)
+      lenis.scrollTo(element, { offset: 30, duration: 1.2 });
+    } else {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     if (window.location.pathname === '/') {
       e.preventDefault();
       setIsMobileMenuOpen(false);
-      const element = document.querySelector(hash) as HTMLElement;
-      if (lenis && element) {
-        lenis.scrollTo(element, { offset: -120 });
-      } else if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToTarget(hash);
       window.history.pushState(null, '', hash);
     } else {
       setIsMobileMenuOpen(false);
     }
   };
+
+  // Interception universelle des clics sur n'importe quel CTA / lien d'ancre de la page (ex: boutons Hero, Offres, Parallax, etc.)
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement).closest('a');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+
+      let hash = '';
+      if (href.startsWith('#') && href.length > 1) {
+        hash = href;
+      } else if (href.startsWith('/#') && window.location.pathname === '/') {
+        hash = href.slice(1);
+      }
+
+      if (hash && hash !== '#') {
+        const targetElement = document.querySelector(hash) as HTMLElement;
+        if (targetElement) {
+          e.preventDefault();
+          setIsMobileMenuOpen(false);
+          scrollToTarget(hash);
+          window.history.pushState(null, '', hash);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, [lenis]);
 
   return (
     <>

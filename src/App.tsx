@@ -127,14 +127,18 @@ function Home() {
     if (window.location.hash) {
       const hash = window.location.hash;
       const attemptScroll = () => {
-        const element = document.querySelector(hash);
+        const element = document.querySelector(hash) as HTMLElement;
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          if (window.__lenis) {
+            window.__lenis.scrollTo(element, { offset: 30, duration: 1.2 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         } else {
           setTimeout(attemptScroll, 100);
         }
       };
-      setTimeout(attemptScroll, 100);
+      setTimeout(attemptScroll, 150);
     }
   }, []);
 

@@ -36,8 +36,20 @@ export function Hero() {
       </div>
       
       <div className="absolute inset-0 z-0 opacity-50 pointer-events-none">
-        <video id="hero-video" autoPlay loop muted playsInline poster="/images/hero-fallback.webp" className="w-full h-full object-cover">
+        <video 
+          id="hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          poster="/images/hero-fallback.webp" 
+          width="1280" 
+          height="720"
+          className="w-full h-full object-cover"
+        >
           <source src="/videos/video.webm" type="video/webm" />
+          <source src="/videos/video.mp4" type="video/mp4" />
         </video>
       </div>
     </section>
