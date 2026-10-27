@@ -32,24 +32,18 @@ export function MainLayout() {
     const activeHash = hash ? (legacyHashMap[hash] || hash) : '';
 
     if (activeHash) {
-      // Si changement de page avec ancre (ex: clic Prendre RDV depuis une spécialité) :
-      // On masque l'ancien scroll en remettant immédiatement à 0 avant de caler sur l'ancre
-      if (isPageChange) {
-        window.scrollTo(0, 0);
-        if (lenis) {
-          lenis.scrollTo(0, { immediate: true });
-        }
+      if (lenis) {
+        lenis.resize();
       }
 
       let attempts = 0;
-      const maxAttempts = 20;
+      const maxAttempts = 30;
 
       const performScroll = () => {
         const targetElement = document.querySelector(activeHash) as HTMLElement;
         if (targetElement) {
           if (lenis) {
-            // Lors d'un changement de page : calage direct immédiat (pas de slide depuis le milieu/à-propos)
-            // Sur la même page : défilement fluide
+            lenis.resize();
             lenis.scrollTo(targetElement, { 
               offset: 30, 
               immediate: isPageChange,
@@ -64,18 +58,46 @@ export function MainLayout() {
         }
       };
 
-      // Si changement de page, on exécute immédiatement pour éviter tout flash intermédiaire
+      // Lors d'un changement de page, le DOM grandit asynchronement (médias, fonts, vidéos).
+      // Un ResizeObserver sur document.body garantit que dès que la hauteur réelle de la page
+      // est atteinte, le scroll se recale exactement sur l'ancre ciblée.
+      let observer: ResizeObserver | null = null;
+      if (typeof ResizeObserver !== 'undefined') {
+        observer = new ResizeObserver(() => {
+          performScroll();
+        });
+        observer.observe(document.body);
+      }
+
       performScroll();
       const t1 = setTimeout(performScroll, 50);
-      const t2 = setTimeout(performScroll, 200);
+      const t2 = setTimeout(performScroll, 150);
+      const t3 = setTimeout(performScroll, 300);
+      const t4 = setTimeout(performScroll, 600);
+      const t5 = setTimeout(performScroll, 1000);
+
+      const stopObserverTimer = setTimeout(() => {
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+      }, 1500);
 
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
+        clearTimeout(t3);
+        clearTimeout(t4);
+        clearTimeout(t5);
+        clearTimeout(stopObserverTimer);
+        if (observer) {
+          observer.disconnect();
+        }
       };
     } else {
       // Nouvelle page sans ancre : retour instantané en haut
       if (lenis) {
+        lenis.resize();
         lenis.scrollTo(0, { immediate: true });
       } else {
         window.scrollTo(0, 0);
@@ -135,10 +157,19 @@ export function MainLayout() {
   }, []);
 
   const scrollToTarget = useCallback((hash: string) => {
-    const element = document.querySelector(hash) as HTMLElement;
+    const legacyHashMap: Record<string, string> = {
+      '#about': '#a-propos',
+      '#approach': '#l-hypnose',
+      '#services': '#mes-offres',
+      '#process': '#deroulement',
+      '#hero': '#accueil'
+    };
+    const activeHash = legacyHashMap[hash] || hash;
+    const element = document.querySelector(activeHash) as HTMLElement;
     if (!element) return;
 
     if (lenis) {
+      lenis.resize();
       // Offset calibré pour caler le bloc haut sous la nav (+30px compense le padding de section)
       lenis.scrollTo(element, { offset: 30, duration: 1.2 });
     } else {

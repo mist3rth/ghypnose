@@ -78,9 +78,8 @@
   - `#process` -> `#deroulement`
   - `#hero` -> `#accueil`
 - [x] Mise en place d'une rétrocompatibilité automatique (`legacyHashMap`) dans `MainLayout.tsx` pour rediriger les anciennes ancres anglaises en mémoire sans casser d'anciens liens ou favoris.
-- [x] Élimination de l'« étape de trop » (flash sur « À propos » et glissement depuis le milieu de page) lors d'un clic CTA de réservation depuis une page spécialité :
-  - Détection de changement de page (`isPageChange`) via `prevPathnameRef`.
-  - Réinitialisation instantanée du scroll (`window.scrollTo(0, 0)` et `lenis.scrollTo(0, { immediate: true })`).
-  - Calage immédiat (`immediate: true, duration: 0`) directement sur `#contact`.
-  - Maintien du smooth scroll doux (1.2s) uniquement lors de la navigation interne sur la même page.
+- [x] Résolution définitive du blocage à « À propos / Mes Formations » lors du clic CTA cross-page :
+  - **Cause racine identifiée :** Lors du montage de la home, les sections supérieures (vidéos, polices, composants) étirent progressivement la page de 2 000 px à 12 379 px. Comme Lenis conservait la hauteur limitée de la page précédente et qu'un scroll statique trop précoce figeait la coordonnée initiale, le défilement était bridé à mi-hauteur.
+  - **Correction :** Implémentation d'un `ResizeObserver` sur `document.body` couplé à `lenis.resize()` et à un recalage instantané (`immediate: true, offset: 30`) jusqu'à stabilisation complète du DOM.
+  - **Validation :** Test automatisé en navigateur subagent confirmant l'atterrissage direct et parfaitement centré sous la navbar sur le formulaire « Contactez moi ».
 
