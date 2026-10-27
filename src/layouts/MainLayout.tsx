@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { Phone, ExternalLink } from 'lucide-react';
 import Lenis from 'lenis';
 
@@ -14,36 +14,64 @@ export function MainLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lenis, setLenis] = useState<Lenis | null>(null);
   const { pathname, hash } = useLocation();
+  const prevPathnameRef = useRef(pathname);
 
   // Défilement réactif et centralisé lors des changements d'URL et d'ancre
   useEffect(() => {
-    if (hash) {
+    const isPageChange = prevPathnameRef.current !== pathname;
+    prevPathnameRef.current = pathname;
+
+    // Normalisation des ancres françaises (avec compatibilité ascendante)
+    const legacyHashMap: Record<string, string> = {
+      '#about': '#a-propos',
+      '#approach': '#l-hypnose',
+      '#services': '#mes-offres',
+      '#process': '#deroulement',
+      '#hero': '#accueil'
+    };
+    const activeHash = hash ? (legacyHashMap[hash] || hash) : '';
+
+    if (activeHash) {
+      // Si changement de page avec ancre (ex: clic Prendre RDV depuis une spécialité) :
+      // On masque l'ancien scroll en remettant immédiatement à 0 avant de caler sur l'ancre
+      if (isPageChange) {
+        window.scrollTo(0, 0);
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        }
+      }
+
       let attempts = 0;
       const maxAttempts = 20;
 
       const performScroll = () => {
-        const targetElement = document.querySelector(hash) as HTMLElement;
+        const targetElement = document.querySelector(activeHash) as HTMLElement;
         if (targetElement) {
           if (lenis) {
-            lenis.scrollTo(targetElement, { offset: 30, duration: 1.2 });
+            // Lors d'un changement de page : calage direct immédiat (pas de slide depuis le milieu/à-propos)
+            // Sur la même page : défilement fluide
+            lenis.scrollTo(targetElement, { 
+              offset: 30, 
+              immediate: isPageChange,
+              duration: isPageChange ? 0 : 1.2 
+            });
           } else {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+            targetElement.scrollIntoView({ behavior: isPageChange ? 'instant' : 'smooth' });
           }
         } else if (attempts < maxAttempts) {
           attempts++;
-          setTimeout(performScroll, 50);
+          setTimeout(performScroll, 30);
         }
       };
 
-      // Déclenchements échelonnés pour garantir un calage exact même si le DOM/images se chargent
+      // Si changement de page, on exécute immédiatement pour éviter tout flash intermédiaire
+      performScroll();
       const t1 = setTimeout(performScroll, 50);
-      const t2 = setTimeout(performScroll, 250);
-      const t3 = setTimeout(performScroll, 600);
+      const t2 = setTimeout(performScroll, 200);
 
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
-        clearTimeout(t3);
       };
     } else {
       // Nouvelle page sans ancre : retour instantané en haut
@@ -187,10 +215,10 @@ export function MainLayout() {
           </Link>
           
           <ul className="hidden lg:flex list-none gap-[clamp(1rem,2.5vw,2.5rem)] items-center m-0 p-0">
-            <li><a href="/#about" onClick={(e) => handleNavClick(e, '#about')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">À propos</a></li>
-            <li><a href="/#approach" onClick={(e) => handleNavClick(e, '#approach')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
-            <li><a href="/#services" onClick={(e) => handleNavClick(e, '#services')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
-            <li><a href="/#process" onClick={(e) => handleNavClick(e, '#process')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
+            <li><a href="/#a-propos" onClick={(e) => handleNavClick(e, '#a-propos')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">À propos</a></li>
+            <li><a href="/#l-hypnose" onClick={(e) => handleNavClick(e, '#l-hypnose')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
+            <li><a href="/#mes-offres" onClick={(e) => handleNavClick(e, '#mes-offres')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
+            <li><a href="/#deroulement" onClick={(e) => handleNavClick(e, '#deroulement')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
             <li><a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Contact</a></li>
           </ul>
 
@@ -222,10 +250,10 @@ export function MainLayout() {
       >
         <div className="flex flex-col items-center justify-center h-full pt-20 pb-10">
           <ul className="flex flex-col items-center gap-8 m-0 p-0 list-none">
-            <li><a href="/#about" onClick={(e) => handleNavClick(e, '#about')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">À propos</a></li>
-            <li><a href="/#approach" onClick={(e) => handleNavClick(e, '#approach')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
-            <li><a href="/#services" onClick={(e) => handleNavClick(e, '#services')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
-            <li><a href="/#process" onClick={(e) => handleNavClick(e, '#process')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
+            <li><a href="/#a-propos" onClick={(e) => handleNavClick(e, '#a-propos')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">À propos</a></li>
+            <li><a href="/#l-hypnose" onClick={(e) => handleNavClick(e, '#l-hypnose')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
+            <li><a href="/#mes-offres" onClick={(e) => handleNavClick(e, '#mes-offres')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
+            <li><a href="/#deroulement" onClick={(e) => handleNavClick(e, '#deroulement')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
             <li><a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Contact</a></li>
           </ul>
         </div>

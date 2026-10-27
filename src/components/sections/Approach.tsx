@@ -2,7 +2,7 @@ import LinearReveal from '../ui/LinearReveal';
 
 export function Approach() {
   return (
-    <section id="approach" className="py-[clamp(4rem,10vw,8rem)] px-4">
+    <section id="l-hypnose" className="py-[clamp(4rem,10vw,8rem)] px-4">
       <div className="max-w-[1200px] mx-auto">
         <LinearReveal
           Text="Pourquoi choisir l'Hypnose ?"

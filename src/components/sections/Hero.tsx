@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-32 pb-8 px-4 relative overflow-hidden">
+    <section id="accueil" className="min-h-screen flex items-center justify-center pt-32 pb-8 px-4 relative overflow-hidden">
       <div className="max-w-[800px] z-10 text-center">
         <h1 className="sr-only">Hypnose Ericksonienne à Paris | Grégory Fitoussi</h1>
         <motion.p 
@@ -30,7 +30,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16"
         >
           <a href="#contact" className="btn btn-primary">Réserver ma séance</a>
-          <a href="#services" className="btn btn-secondary">Voir mes accompagnements</a>
+          <a href="#mes-offres" className="btn btn-secondary">Voir mes accompagnements</a>
         </motion.div>
 
       </div>

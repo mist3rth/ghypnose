@@ -1,6 +1,6 @@
 export function Process() {
   return (
-    <section id="process" className="py-[clamp(4rem,10vw,8rem)] px-4 bg-white/5">
+    <section id="deroulement" className="py-[clamp(4rem,10vw,8rem)] px-4 bg-white/5">
       <div className="max-w-[1200px] mx-auto">
         <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-12 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
           Façon de travailler

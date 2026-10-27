@@ -4,7 +4,7 @@ import { Gift, ArrowRight } from 'lucide-react';
 
 export function Services() {
   return (
-    <section id="services" className="py-[clamp(4rem,10vw,8rem)] px-4 relative overflow-hidden">
+    <section id="mes-offres" className="py-[clamp(4rem,10vw,8rem)] px-4 relative overflow-hidden">
       {/* Decorative background glow for the whole section */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 

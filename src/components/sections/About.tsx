@@ -15,7 +15,7 @@ export function About() {
   const y = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   return (
-    <section id="about" className="py-[clamp(4rem,10vw,8rem)] px-4">
+    <section id="a-propos" className="py-[clamp(4rem,10vw,8rem)] px-4">
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
         <div ref={ref} className="w-full md:w-2/5 flex justify-center perspective-1000">
           <motion.img

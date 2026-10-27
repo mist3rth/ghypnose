@@ -70,6 +70,17 @@
   - Ajout des attributs `width="1280"` et `height="720"` et `preload="auto"` sur la vidéo hero.
   - Ajout d'un poster dédié et dimensions sur `PractitionerVideo`.
 - [x] Mettre en conformité `public/llms.txt` avec les recommandations llmstxt.org / Lighthouse (H1, bloc de citation, liens Markdown obligatoires).
-- [x] Gérer le défilement réactif cross-pages : redirection fluide et calage automatique vers le formulaire `#contact` depuis les 4 pages de spécialités.
-- [x] Corriger le blocage du hover/clic sur le bouton "Offrir" du bloc "Bon • Réflexologie" (neutralisation du calque flou décoratif via `pointer-events-none` et élévation `relative z-10`).
+## Phase 9 : Francisation des Ancres & Défilement Cross-Page Immédiat
+- [x] Traduction de l'intégralité des identifiants d'ancres en français :
+  - `#about` -> `#a-propos`
+  - `#approach` -> `#l-hypnose`
+  - `#services` -> `#mes-offres`
+  - `#process` -> `#deroulement`
+  - `#hero` -> `#accueil`
+- [x] Mise en place d'une rétrocompatibilité automatique (`legacyHashMap`) dans `MainLayout.tsx` pour rediriger les anciennes ancres anglaises en mémoire sans casser d'anciens liens ou favoris.
+- [x] Élimination de l'« étape de trop » (flash sur « À propos » et glissement depuis le milieu de page) lors d'un clic CTA de réservation depuis une page spécialité :
+  - Détection de changement de page (`isPageChange`) via `prevPathnameRef`.
+  - Réinitialisation instantanée du scroll (`window.scrollTo(0, 0)` et `lenis.scrollTo(0, { immediate: true })`).
+  - Calage immédiat (`immediate: true, duration: 0`) directement sur `#contact`.
+  - Maintien du smooth scroll doux (1.2s) uniquement lors de la navigation interne sur la même page.
 
