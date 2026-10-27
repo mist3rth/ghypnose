@@ -1,37 +1,10 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export const FAQ_DATA: FAQItem[] = [
-  {
-    question: "Vais-je perdre le contrôle ou dormir pendant la séance ?",
-    answer: "Absolument pas. L'hypnose Ericksonienne n'a rien à voir avec l'hypnose de spectacle. C'est un état de conscience modifié doux et naturel où vous restez pleinement conscient de ce qui se passe. Vous entendez ma voix, vous pouvez interagir, bouger et même décider d'interrompre le processus à tout instant. Vous conservez votre libre arbitre total tout au long de la séance."
-  },
-  {
-    question: "Combien de séances sont nécessaires pour obtenir des résultats durables ?",
-    answer: "L'hypnose fait partie des thérapies brèves orientées solutions. La grande majorité des personnes constatent des déclics et des changements notables dès la première séance. En moyenne, un accompagnement complet nécessite entre 2 et 4 séances espacées de 2 à 3 semaines. Pour le sevrage tabagique, 1 à 2 séances ciblées suffisent généralement."
-  },
-  {
-    question: "L'hypnose fonctionne-t-elle sur tout le monde ?",
-    answer: "Oui, car l'état hypnotique est un processus physiologique naturel que votre cerveau expérimente chaque jour (lorsque vous êtes plongé dans un bon livre, absorbé par un film ou 'dans la lune' sur un trajet familier). Il ne s'agit pas d'un don mais d'une prédisposition universelle. Mon rôle de praticien certifié est d'adapter précisément les suggestions à votre personnalité et à votre sensibilité."
-  },
-  {
-    question: "Les séances sont-elles remboursées par la Sécurité Sociale ou ma mutuelle ?",
-    answer: "L'hypnothérapie n'est pas prise en charge par la Sécurité Sociale. En revanche, un très grand nombre de mutuelles et complémentaires santé proposent un remboursement partiel ou total sous forme de forfait annuel 'médecines douces'. Une note d'honoraires officielle avec numéro SIRET vous est systématiquement remise à l'issue de chaque consultation."
-  },
-  {
-    question: "Comment se déroule la première consultation dans vos cabinets parisiens ?",
-    answer: "La séance inaugurale dure entre 1h et 1h30. Nous prenons d'abord le temps d'échanger en profondeur sur votre situation, vos blocages et vos attentes précises. Ensuite, nous réalisons une première expérience hypnotique personnalisée pour amorcer le travail inconscient. Enfin, nous débriefons ensemble et je vous transmets des outils d'auto-hypnose simples à reproduire chez vous."
-  }
-];
+import { FAQ_DATA } from '../../data/faqData';
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Première question ouverte par défaut pour inciter à la lecture
+  // La première question est ouverte par défaut pour inciter à la lecture et lever immédiatement les freins
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleQuestion = (index: number) => {
     setOpenIndex(prev => (prev === index ? null : index));
@@ -52,7 +25,7 @@ export function FAQ() {
           </p>
         </div>
 
-        {/* Liste accordéon FAQ accessible */}
+        {/* Liste accordéon FAQ fluide et accessible */}
         <div className="flex flex-col gap-4">
           {FAQ_DATA.map((item, index) => {
             const isOpen = openIndex === index;
@@ -62,7 +35,7 @@ export function FAQ() {
             return (
               <div 
                 key={index}
-                className={`rounded-2xl transition-all duration-300 border backdrop-blur-[20px] ${
+                className={`rounded-2xl transition-colors duration-200 border backdrop-blur-[20px] ${
                   isOpen 
                     ? 'bg-white/[0.07] border-accent-primary/40 shadow-[0_10px_30px_rgba(212,175,55,0.06)]' 
                     : 'bg-white/5 border-white/10 hover:border-accent-primary/25 hover:bg-white/[0.06]'
@@ -70,15 +43,16 @@ export function FAQ() {
               >
                 <button
                   id={questionId}
+                  type="button"
                   aria-expanded={isOpen}
                   aria-controls={answerId}
                   onClick={() => toggleQuestion(index)}
-                  className="w-full py-5 px-6 sm:px-8 flex items-center justify-between text-left cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-2xl gap-4"
+                  className="w-full py-5 px-6 sm:px-8 flex items-center justify-between text-left cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-2xl gap-4 select-none"
                 >
                   <span className="text-lg sm:text-xl font-medium text-white tracking-wide">
                     {item.question}
                   </span>
-                  <div className={`p-2 rounded-full border shrink-0 transition-all duration-300 ${
+                  <div className={`p-2 rounded-full border shrink-0 transition-transform duration-300 ${
                     isOpen 
                       ? 'border-accent-primary/40 bg-accent-primary/15 text-accent-primary rotate-180' 
                       : 'border-white/10 text-white/60 bg-white/5'
@@ -87,24 +61,23 @@ export function FAQ() {
                   </div>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={answerId}
-                      role="region"
-                      aria-labelledby={questionId}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 sm:px-8 pb-6 pt-1 text-text-muted text-[0.98rem] leading-relaxed border-t border-white/5 mt-1">
-                        {item.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  id={answerId}
+                  role="region"
+                  aria-labelledby={questionId}
+                  aria-hidden={!isOpen}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                  }`}
+                >
+                  <div className="overflow-hidden min-h-0">
+                    <div className={`px-6 sm:px-8 pb-6 pt-1 text-text-muted text-[0.98rem] leading-relaxed border-t border-white/5 mt-1 transition-opacity duration-200 ${
+                      isOpen ? 'opacity-100 delay-75' : 'opacity-0 pointer-events-none'
+                    }`}>
+                      {item.answer}
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

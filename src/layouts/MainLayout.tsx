@@ -230,6 +230,7 @@ export function MainLayout() {
             <li><a href="/#l-hypnose" onClick={(e) => handleNavClick(e, '#l-hypnose')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
             <li><a href="/#mes-offres" onClick={(e) => handleNavClick(e, '#mes-offres')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
             <li><a href="/#deroulement" onClick={(e) => handleNavClick(e, '#deroulement')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
+            <li><a href="/#faq" onClick={(e) => handleNavClick(e, '#faq')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">FAQ</a></li>
             <li><a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="text-text-main text-[0.9rem] font-medium transition-colors hover:text-accent-secondary">Contact</a></li>
           </ul>
 
@@ -265,6 +266,7 @@ export function MainLayout() {
             <li><a href="/#l-hypnose" onClick={(e) => handleNavClick(e, '#l-hypnose')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">L'hypnose</a></li>
             <li><a href="/#mes-offres" onClick={(e) => handleNavClick(e, '#mes-offres')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Mes Offres</a></li>
             <li><a href="/#deroulement" onClick={(e) => handleNavClick(e, '#deroulement')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Déroulement</a></li>
+            <li><a href="/#faq" onClick={(e) => handleNavClick(e, '#faq')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">FAQ</a></li>
             <li><a href="/#contact" onClick={(e) => handleNavClick(e, '#contact')} className="text-white text-2xl font-medium transition-colors hover:text-accent-secondary">Contact</a></li>
           </ul>
         </div>

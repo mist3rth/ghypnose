@@ -8,7 +8,8 @@ import { Specialties } from './components/sections/Specialties';
 import { Services } from './components/sections/Services';
 import { Process } from './components/sections/Process';
 import { Testimonials } from './components/sections/Testimonials';
-import { FAQ, FAQ_DATA } from './components/sections/FAQ';
+import { FAQ } from './components/sections/FAQ';
+import { FAQ_DATA } from './data/faqData';
 import { Contact } from './components/sections/Contact';
 import { ParallaxBreak } from './components/sections/ParallaxBreak';
 
