@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Phone, ExternalLink } from 'lucide-react';
 import Lenis from 'lenis';
 
@@ -13,17 +13,47 @@ export function MainLayout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lenis, setLenis] = useState<Lenis | null>(null);
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
+  // Défilement réactif et centralisé lors des changements d'URL et d'ancre
   useEffect(() => {
-    if (!window.location.hash) {
+    if (hash) {
+      let attempts = 0;
+      const maxAttempts = 20;
+
+      const performScroll = () => {
+        const targetElement = document.querySelector(hash) as HTMLElement;
+        if (targetElement) {
+          if (lenis) {
+            lenis.scrollTo(targetElement, { offset: 30, duration: 1.2 });
+          } else {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(performScroll, 50);
+        }
+      };
+
+      // Déclenchements échelonnés pour garantir un calage exact même si le DOM/images se chargent
+      const t1 = setTimeout(performScroll, 50);
+      const t2 = setTimeout(performScroll, 250);
+      const t3 = setTimeout(performScroll, 600);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
+    } else {
+      // Nouvelle page sans ancre : retour instantané en haut
       if (lenis) {
         lenis.scrollTo(0, { immediate: true });
       } else {
         window.scrollTo(0, 0);
       }
     }
-  }, [pathname, lenis]);
+  }, [pathname, hash, lenis]);
 
   useEffect(() => {
     const l = new Lenis({
@@ -76,7 +106,7 @@ export function MainLayout() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const scrollToTarget = (hash: string) => {
+  const scrollToTarget = useCallback((hash: string) => {
     const element = document.querySelector(hash) as HTMLElement;
     if (!element) return;
 
@@ -86,7 +116,7 @@ export function MainLayout() {
     } else {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, [lenis]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     if (window.location.pathname === '/') {
@@ -128,7 +158,7 @@ export function MainLayout() {
 
     document.addEventListener('click', handleGlobalClick);
     return () => document.removeEventListener('click', handleGlobalClick);
-  }, [lenis]);
+  }, [scrollToTarget]);
 
   return (
     <>

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { MainLayout } from './layouts/MainLayout';
 import { Hero } from './components/sections/Hero';
 import { Marquee } from './components/sections/Marquee';
@@ -122,26 +121,6 @@ const homeSchema = {
 };
 
 function Home() {
-  // Fix hash scrolling on page load
-  useEffect(() => {
-    if (window.location.hash) {
-      const hash = window.location.hash;
-      const attemptScroll = () => {
-        const element = document.querySelector(hash) as HTMLElement;
-        if (element) {
-          if (window.__lenis) {
-            window.__lenis.scrollTo(element, { offset: 30, duration: 1.2 });
-          } else {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        } else {
-          setTimeout(attemptScroll, 100);
-        }
-      };
-      setTimeout(attemptScroll, 150);
-    }
-  }, []);
-
   return (
     <>
       <SEOHead
