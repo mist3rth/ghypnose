@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { FadeIn } from '../ui/FadeIn';
+import { SEOHead } from '../common/SEOHead';
 
 export function NotFound() {
   return (
     <>
-      <Helmet>
-        <title>Page introuvable | GHypnose</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
+      <SEOHead
+        title="Page introuvable (404) | GHypnose"
+        description="La page que vous recherchez n'existe pas ou a été déplacée."
+        canonical="https://www.ghypnose.fr/404"
+        robots="noindex, nofollow"
+      />
 
       <main className="pt-32 pb-20 px-4 min-h-[80vh] flex items-center justify-center">
         <FadeIn className="max-w-[600px] w-full text-center">

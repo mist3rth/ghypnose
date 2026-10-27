@@ -8,25 +8,25 @@ const specialties = [
     title: "Arrêt du Tabac",
     desc: "Sevrage tabagique par l'hypnose, sans stress et sans prise de poids.",
     image: "/images/hypnose_tabac.jpg",
-    link: "/specialites/arret-tabac",
+    link: "/hypnose-arret-tabac-paris",
   },
   {
     title: "Stress & Anxiété",
     desc: "Gestion du stress au travail, angoisses et prévention du burn-out.",
     image: "/images/hypnose_stress.jpg",
-    link: "/specialites/stress-anxiete",
+    link: "/hypnose-stress-anxiete-paris",
   },
   {
     title: "Troubles du Sommeil",
     desc: "Apaiser les angoisses nocturnes et retrouver un sommeil réparateur.",
     image: "/images/hypnose_sommeil.jpg",
-    link: "/specialites/troubles-sommeil",
+    link: "/hypnose-sommeil-insomnie-paris",
   },
   {
     title: "Confiance en soi",
     desc: "Vaincre la timidité, s'affirmer et gérer son hypersensibilité.",
     image: "/images/hypnose_confiance.jpg",
-    link: "/specialites/confiance-en-soi",
+    link: "/hypnose-confiance-en-soi-paris",
   }
 ];
 

@@ -1,0 +1,62 @@
+# TODO & Roadmap : SSG, SEO, Slugs, GSC & Security Headers
+
+## Phase 1 : Architecture & Validation
+- [x] Diagnostic complet de l'état actuel (SSG streaming React 19, head tags dupliqués, absence security headers).
+- [x] Rédaction du `PRD.md` et de `ARCHITECTURE.md`.
+- [x] Élaboration des propositions de nouveaux slugs SEO pour les 4 spécialités.
+- [x] Validation de l'architecture et choix de l'Option B par l'utilisateur (déploiement OVHcloud mutualisé).
+
+## Phase 2 : Refonte SSG (Suppression des fausses coquilles vides)
+- [x] Remplacer les imports dynamiques `React.lazy()` par des imports statiques directs dans `src/App.tsx`.
+- [x] Retirer les `<Suspense fallback=...>` bloquants et générateurs de streaming à la compilation.
+- [x] Nettoyer `index.html` (retrait des balises statiques `<title>` et `<meta description>` en dur qui écrasent le SSG).
+- [x] Valider que `dist/index.html` et chaque page contiennent directement l'ensemble du DOM textuel dans `<main>` à la compilation.
+
+## Phase 3 : Nouveaux Noms de Pages (Slugs SEO) & Redirections 301
+- [x] Mettre à jour les routes dans `src/App.tsx` avec les nouveaux slugs Option B.
+- [x] Mettre à jour les liens de navigation interne :
+  - `src/components/sections/Specialties.tsx`
+  - `src/layouts/MainLayout.tsx` (Footer & Header)
+  - Liens relatifs suivant/précédent entre spécialités
+- [x] Mettre à jour `public/sitemap.xml` avec les nouvelles URLs Option B.
+- [x] Configurer les redirections 301 dans `public/.htaccess` des anciens slugs `/specialites/*` vers les nouveaux.
+
+## Phase 4 : Balisage SEO Complet & Schema.org par Page
+- [x] Développer un composant unifié `<SEOHead>` basé sur `Head` de `vite-react-ssg` gérant :
+  - Title optimisé
+  - Meta description persuasive (150-160 caractères)
+  - Canonical URL absolue
+  - Open Graph (`og:title`, `og:description`, `og:url`, `og:image`, `og:type`, locale, site_name)
+  - Twitter Card (`summary_large_image`)
+  - Robots (`index, follow` pour pages publiques, `noindex, nofollow` pour 404)
+  - Schema.org JSON-LD spécifique
+- [x] Implémenter les schemas JSON-LD spécifiques :
+  - `/` : `HealthAndBeautyBusiness` + `LocalBusiness` complet (Paris 10 & 5, coordonnées, tarifs, diplômes, hasOfferCatalog).
+  - `/hypnose-arret-tabac-paris` : `Service` (Arrêt du tabac, provider GHypnose, areaServed Paris, tarif 90€).
+  - `/hypnose-stress-anxiete-paris` : `Service` (Gestion du stress & anxiété, provider GHypnose, areaServed Paris, tarif 90€).
+  - `/hypnose-sommeil-insomnie-paris` : `Service` (Troubles du sommeil & insomnie, provider GHypnose, areaServed Paris, tarif 90€).
+  - `/hypnose-confiance-en-soi-paris` : `Service` (Confiance en soi & estime, provider GHypnose, areaServed Paris, tarif 90€).
+  - `/mentions-legales` & `/rgpd` : `WebPage`.
+
+## Phase 5 : Résolution de l'alerte GSC (no-index & 404)
+- [x] Corriger la gestion de la page 404 dans Apache (`.htaccess`) :
+  - La route `/404` ne doit plus être réécrite en code `200 OK`.
+  - Retourner un véritable statut HTTP `404 Not Found` avec affichage de `404.html`.
+- [x] Vérifier que `NotFound.tsx` conserve `noindex, nofollow` tout en étant servie exclusivement en code 404.
+- [x] Confirmer que toutes les pages canoniques réelles sont explicitement en `index, follow`.
+
+## Phase 6 : Durcissement des En-têtes de Sécurité (Cible ≥ 80% / A+)
+- [x] Mettre à jour `public/.htaccess` avec les en-têtes HTTP de sécurité pour OVHcloud mutualisé :
+  - `Strict-Transport-Security` (HSTS max-age 31536000 preload)
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: SAMEORIGIN`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+  - `Permissions-Policy`
+  - `Content-Security-Policy` (CSP) calibrée pour GAS, polices et médias locaux
+  - Compression Gzip (`mod_deflate`) & cache navigateur (`mod_expires`)
+- [x] Mettre à jour `vercel.json` avec la configuration équivalente.
+
+## Phase 7 : Vérifications Finales & Validation
+- [x] Compiler en mode production (`npm run build`) avec succès (0 erreurs).
+- [x] Linter oxlint vérifié (0 erreurs).
+- [x] Inspection des fichiers statiques générés dans `dist/` (titres, metas, schemas et corps de texte vérifiés).

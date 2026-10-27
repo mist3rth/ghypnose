@@ -1,24 +1,55 @@
-import { Helmet } from 'react-helmet-async';
 import { FadeIn } from '../../ui/FadeIn';
 import { ArrowRight, CheckCircle2, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../../common/SEOHead';
+
+const stressAnxieteSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Gestion du Stress & Anxiété par l'Hypnose à Paris",
+  "serviceType": "Séance d'hypnose pour la gestion du stress et de l'anxiété",
+  "provider": {
+    "@type": "HealthAndBeautyBusiness",
+    "name": "GHypnose - Grégory Fitoussi",
+    "url": "https://www.ghypnose.fr/",
+    "telephone": "+33698060008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 Boulevard Magenta",
+      "addressLocality": "Paris",
+      "postalCode": "75010",
+      "addressCountry": "FR"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Paris"
+  },
+  "description": "Accompagnement personnalisé en hypnose Ericksonienne à Paris pour soulager le stress, l'anxiété généralisée, les crises d'angoisse et le burn-out.",
+  "offers": {
+    "@type": "Offer",
+    "price": "90",
+    "priceCurrency": "EUR"
+  }
+};
 
 export function StressAnxiete() {
   return (
     <main className="pt-32 pb-20 px-4 min-h-screen relative overflow-hidden">
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-accent-secondary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
       
-      <Helmet>
-        <title>Hypnothérapeute gestion du stress au travail Paris 10</title>
-        <meta name="description" content="Gérer son stress, ses angoisses ou un burn-out grâce à l'hypnose à Paris. Retrouvez sérénité et équilibre émotionnel avec un accompagnement sur-mesure." />
-        <link rel="canonical" href="https://www.ghypnose.fr/specialites/stress-anxiete" />
-      </Helmet>
+      <SEOHead
+        title="Gestion du Stress & Anxiété par l'Hypnose à Paris | GHypnose"
+        description="Surmontez le stress, l'anxiété et le surmenage par l'hypnose à Paris 10 & 5. Retrouvez calme, sérénité et équilibre intérieur avec Grégory Fitoussi."
+        canonical="https://www.ghypnose.fr/hypnose-stress-anxiete-paris"
+        schema={stressAnxieteSchema}
+      />
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
           <div className="flex justify-between items-center mb-8 w-full">
             <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
-            <Link to="/specialites/troubles-sommeil" className="text-accent-secondary hover:underline text-right">Troubles du Sommeil &rarr;</Link>
+            <Link to="/hypnose-sommeil-insomnie-paris" className="text-accent-secondary hover:underline text-right">Troubles du Sommeil &rarr;</Link>
           </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Gestion du <span className="text-accent-secondary">Stress & Anxiété</span> par l'Hypnose
@@ -55,7 +86,7 @@ export function StressAnxiete() {
         <FadeIn delay={0.2}>
           <h2 className="text-2xl font-title font-semibold text-white mb-6">Un espace de parole et de relâchement</h2>
           <p className="text-text-muted mb-8 leading-relaxed">
-            Au sein de mon cabinet à Paris 10, je vous propose un cadre bienveillant. La séance allie souvent une phase d'hypnose conversationnelle pour verbaliser vos ressentis, suivie d'un travail hypnotique profond pour relâcher les tensions physiques et émotionnelles.
+            Au sein de mon cabinet à Paris 10 ou Paris 5, je vous propose un cadre bienveillant. La séance allie une phase d'hypnose conversationnelle pour verbaliser vos ressentis, suivie d'un travail hypnotique profond pour relâcher les tensions physiques et émotionnelles.
           </p>
           
           <div className="bg-gradient-to-br from-accent-secondary/10 to-transparent p-8 rounded-2xl border border-accent-secondary/20 text-center">

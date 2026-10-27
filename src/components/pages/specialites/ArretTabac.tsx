@@ -1,24 +1,55 @@
-import { Helmet } from 'react-helmet-async';
 import { FadeIn } from '../../ui/FadeIn';
 import { ArrowRight, CheckCircle2, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../../common/SEOHead';
+
+const arretTabacSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Arrêt du Tabac par l'Hypnose à Paris",
+  "serviceType": "Sevrage tabagique par hypnose",
+  "provider": {
+    "@type": "HealthAndBeautyBusiness",
+    "name": "GHypnose - Grégory Fitoussi",
+    "url": "https://www.ghypnose.fr/",
+    "telephone": "+33698060008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 Boulevard Magenta",
+      "addressLocality": "Paris",
+      "postalCode": "75010",
+      "addressCountry": "FR"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Paris"
+  },
+  "description": "Séance d'hypnose Ericksonienne sur-mesure pour arrêter de fumer définitivement à Paris. Méthode douce, sans manque, sans stress et sans prise de poids.",
+  "offers": {
+    "@type": "Offer",
+    "price": "90",
+    "priceCurrency": "EUR"
+  }
+};
 
 export function ArretTabac() {
   return (
     <main className="pt-32 pb-20 px-4 min-h-screen relative overflow-hidden">
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-accent-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
       
-      <Helmet>
-        <title>Sevrage tabagique par l'hypnose Paris 10 | Sans prise de poids</title>
-        <meta name="description" content="Arrêter de fumer définitivement avec l'hypnose à Paris 10. Méthode douce et personnalisée pour un sevrage tabagique efficace, sans stress et sans prise de poids." />
-        <link rel="canonical" href="https://www.ghypnose.fr/specialites/arret-tabac" />
-      </Helmet>
+      <SEOHead
+        title="Arrêt du Tabac par l'Hypnose à Paris | Sevrage Doux & Durable - GHypnose"
+        description="Arrêtez de fumer définitivement grâce à l'hypnose Ericksonienne à Paris avec Grégory Fitoussi. Méthode douce et durable, sans stress ni prise de poids."
+        canonical="https://www.ghypnose.fr/hypnose-arret-tabac-paris"
+        schema={arretTabacSchema}
+      />
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
           <div className="flex justify-between items-center mb-8 w-full">
             <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
-            <Link to="/specialites/stress-anxiete" className="text-accent-secondary hover:underline text-right">Stress & Anxiété &rarr;</Link>
+            <Link to="/hypnose-stress-anxiete-paris" className="text-accent-secondary hover:underline text-right">Stress & Anxiété &rarr;</Link>
           </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Sevrage Tabagique par l'<span className="text-accent-primary">Hypnose à Paris</span>
@@ -61,7 +92,7 @@ export function ArretTabac() {
           
           <div className="bg-gradient-to-br from-accent-primary/10 to-transparent p-8 rounded-2xl border border-accent-primary/20 text-center">
             <h3 className="text-xl font-semibold text-white mb-4">Prêt à retrouver votre liberté ?</h3>
-            <p className="text-text-muted mb-6">Prenez rendez-vous dans mon cabinet à Paris 10ème pour entamer votre démarche vers une vie sans tabac.</p>
+            <p className="text-text-muted mb-6">Prenez rendez-vous dans mon cabinet à Paris 10ème ou Paris 5ème pour entamer votre démarche vers une vie sans tabac.</p>
             <Link to="/#contact" className="inline-flex items-center gap-2 bg-accent-primary text-white font-semibold py-3 px-8 rounded-full hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.4)] transition-all">
               Prendre rendez-vous <ArrowRight className="w-4 h-4" />
             </Link>

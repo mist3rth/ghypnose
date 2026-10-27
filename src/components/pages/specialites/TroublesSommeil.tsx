@@ -1,24 +1,55 @@
-import { Helmet } from 'react-helmet-async';
 import { FadeIn } from '../../ui/FadeIn';
 import { ArrowRight, CheckCircle2, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../../common/SEOHead';
+
+const troublesSommeilSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Hypnose pour Troubles du Sommeil & Insomnie à Paris",
+  "serviceType": "Séance d'hypnose pour les troubles du sommeil",
+  "provider": {
+    "@type": "HealthAndBeautyBusiness",
+    "name": "GHypnose - Grégory Fitoussi",
+    "url": "https://www.ghypnose.fr/",
+    "telephone": "+33698060008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 Boulevard Magenta",
+      "addressLocality": "Paris",
+      "postalCode": "75010",
+      "addressCountry": "FR"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Paris"
+  },
+  "description": "Séance d'hypnose Ericksonienne à Paris pour vaincre les insomnies, les angoisses nocturnes et retrouver un cycle de sommeil réparateur et naturel.",
+  "offers": {
+    "@type": "Offer",
+    "price": "90",
+    "priceCurrency": "EUR"
+  }
+};
 
 export function TroublesSommeil() {
   return (
     <main className="pt-32 pb-20 px-4 min-h-screen relative overflow-hidden">
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-accent-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
       
-      <Helmet>
-        <title>Hypnose angoisse nocturne & insomnie Paris 10</title>
-        <meta name="description" content="Apaiser les troubles du sommeil, insomnies et angoisses nocturnes par l'hypnose à Paris. Retrouvez des nuits paisibles et réparatrices." />
-        <link rel="canonical" href="https://www.ghypnose.fr/specialites/troubles-sommeil" />
-      </Helmet>
+      <SEOHead
+        title="Hypnose Sommeil & Insomnie à Paris | Retrouver des Nuits Réparatrices"
+        description="Vaincre l'insomnie et les réveils nocturnes avec l'hypnose Ericksonienne à Paris. Reprogrammez un sommeil naturel, réparateur et profond."
+        canonical="https://www.ghypnose.fr/hypnose-sommeil-insomnie-paris"
+        schema={troublesSommeilSchema}
+      />
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
           <div className="flex justify-between items-center mb-8 w-full">
             <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
-            <Link to="/specialites/confiance-en-soi" className="text-accent-secondary hover:underline text-right">Confiance en soi &rarr;</Link>
+            <Link to="/hypnose-confiance-en-soi-paris" className="text-accent-secondary hover:underline text-right">Confiance en soi &rarr;</Link>
           </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Hypnose pour les <span className="text-accent-primary">Troubles du Sommeil</span>
@@ -60,7 +91,7 @@ export function TroublesSommeil() {
           
           <div className="bg-gradient-to-br from-accent-primary/10 to-transparent p-8 rounded-2xl border border-accent-primary/20 text-center">
             <h3 className="text-xl font-semibold text-white mb-4">Envie de renouer avec un sommeil de qualité ?</h3>
-            <p className="text-text-muted mb-6">Prenons le temps d'analyser vos blocages lors d'une séance dans mon cabinet à Paris 10.</p>
+            <p className="text-text-muted mb-6">Prenons le temps d'analyser vos blocages lors d'une séance dans mon cabinet à Paris 10 ou Paris 5.</p>
             <Link to="/#contact" className="inline-flex items-center gap-2 bg-accent-primary text-white font-semibold py-3 px-8 rounded-full hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(212,175,55,0.4)] transition-all">
               Prendre rendez-vous <ArrowRight className="w-4 h-4" />
             </Link>

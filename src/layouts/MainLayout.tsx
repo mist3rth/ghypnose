@@ -184,10 +184,10 @@ export function MainLayout() {
             <div>
               <h4 className="text-white font-medium mb-4">Domaines d'intervention</h4>
               <nav className="flex flex-col gap-2">
-                <Link to="/specialites/arret-tabac" className="hover:text-accent-secondary transition-colors">Arrêt du Tabac</Link>
-                <Link to="/specialites/stress-anxiete" className="hover:text-accent-secondary transition-colors">Stress & Anxiété</Link>
-                <Link to="/specialites/troubles-sommeil" className="hover:text-accent-secondary transition-colors">Troubles du Sommeil</Link>
-                <Link to="/specialites/confiance-en-soi" className="hover:text-accent-secondary transition-colors">Confiance en soi</Link>
+                <Link to="/hypnose-arret-tabac-paris" className="hover:text-accent-secondary transition-colors">Arrêt du Tabac</Link>
+                <Link to="/hypnose-stress-anxiete-paris" className="hover:text-accent-secondary transition-colors">Stress & Anxiété</Link>
+                <Link to="/hypnose-sommeil-insomnie-paris" className="hover:text-accent-secondary transition-colors">Troubles du Sommeil</Link>
+                <Link to="/hypnose-confiance-en-soi-paris" className="hover:text-accent-secondary transition-colors">Confiance en soi</Link>
               </nav>
             </div>
 

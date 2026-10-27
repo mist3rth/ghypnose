@@ -1,13 +1,23 @@
-import { Helmet } from 'react-helmet-async';
+import { SEOHead } from '../common/SEOHead';
+
+const mentionsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Mentions Légales | GHypnose",
+  "description": "Consultez les mentions légales et informations juridiques du cabinet GHypnose - Grégory Fitoussi à Paris.",
+  "url": "https://www.ghypnose.fr/mentions-legales",
+  "inLanguage": "fr"
+};
 
 export function Mentions() {
   return (
     <div className="pt-[150px] min-h-[80vh] px-4 pb-20">
-      <Helmet>
-        <title>Mentions Légales | GHypnose</title>
-        <meta name="description" content="Consultez les mentions légales du site GHypnose - Grégory Fitoussi, praticien en Hypnose Ericksonienne à Paris." />
-        <link rel="canonical" href="https://www.ghypnose.fr/mentions-legales" />
-      </Helmet>
+      <SEOHead
+        title="Mentions Légales | GHypnose Cabinet d'Hypnose Paris"
+        description="Consultez les mentions légales et informations administratives du cabinet GHypnose - Grégory Fitoussi à Paris."
+        canonical="https://www.ghypnose.fr/mentions-legales"
+        schema={mentionsSchema}
+      />
       <section className="max-w-[800px] mx-auto glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10 animate-fade-in">
         <h1 className="text-[clamp(2rem,5vw,3rem)] font-title text-center mb-12 bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent">
           Mentions Légales

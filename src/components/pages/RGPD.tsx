@@ -1,13 +1,23 @@
-import { Helmet } from 'react-helmet-async';
+import { SEOHead } from '../common/SEOHead';
+
+const rgpdSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Politique de Confidentialité (RGPD) | GHypnose",
+  "description": "Engagements de confidentialité et protection des données personnelles (RGPD) du cabinet GHypnose à Paris.",
+  "url": "https://www.ghypnose.fr/rgpd",
+  "inLanguage": "fr"
+};
 
 export function RGPD() {
   return (
     <div className="pt-[150px] min-h-[80vh] px-4 pb-20">
-      <Helmet>
-        <title>Politique de Confidentialité (RGPD) | GHypnose</title>
-        <meta name="description" content="Découvrez notre politique de confidentialité et la gestion de vos données personnelles sur le site GHypnose." />
-        <link rel="canonical" href="https://www.ghypnose.fr/rgpd" />
-      </Helmet>
+      <SEOHead
+        title="Politique de Confidentialité (RGPD) | GHypnose"
+        description="Découvrez notre politique de confidentialité et la gestion sécurisée de vos données personnelles sur le site GHypnose."
+        canonical="https://www.ghypnose.fr/rgpd"
+        schema={rgpdSchema}
+      />
       <section className="max-w-[800px] mx-auto glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10 animate-fade-in">
         <h1 className="text-[clamp(2rem,5vw,3rem)] font-title text-center mb-12 bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent">
           Politique de Confidentialité (RGPD)

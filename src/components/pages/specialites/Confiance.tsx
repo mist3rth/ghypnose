@@ -1,24 +1,55 @@
-import { Helmet } from 'react-helmet-async';
 import { FadeIn } from '../../ui/FadeIn';
 import { ArrowRight, CheckCircle2, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../../common/SEOHead';
+
+const confianceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Développer la Confiance en Soi par l'Hypnose à Paris",
+  "serviceType": "Séance d'hypnose pour la confiance et l'estime de soi",
+  "provider": {
+    "@type": "HealthAndBeautyBusiness",
+    "name": "GHypnose - Grégory Fitoussi",
+    "url": "https://www.ghypnose.fr/",
+    "telephone": "+33698060008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 Boulevard Magenta",
+      "addressLocality": "Paris",
+      "postalCode": "75010",
+      "addressCountry": "FR"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Paris"
+  },
+  "description": "Séances d'hypnose Ericksonienne personnalisées à Paris pour dépasser la timidité, le syndrome de l'imposteur, la peur du regard d'autrui et libérer votre potentiel.",
+  "offers": {
+    "@type": "Offer",
+    "price": "90",
+    "priceCurrency": "EUR"
+  }
+};
 
 export function Confiance() {
   return (
     <main className="pt-32 pb-20 px-4 min-h-screen relative overflow-hidden">
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-accent-secondary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
       
-      <Helmet>
-        <title>Hypnose pour vaincre sa timidité et manque de confiance Paris 10</title>
-        <meta name="description" content="Développer sa confiance en soi, vaincre sa timidité ou gérer son hypersensibilité grâce à l'hypnose à Paris. Retrouvez votre plein potentiel." />
-        <link rel="canonical" href="https://www.ghypnose.fr/specialites/confiance-en-soi" />
-      </Helmet>
+      <SEOHead
+        title="Développer la Confiance en Soi par l'Hypnose à Paris | GHypnose"
+        description="Dépassez vos blocages, le manque d'assurance et le syndrome de l'imposteur. Renforcez votre estime personnelle grâce à l'hypnose à Paris."
+        canonical="https://www.ghypnose.fr/hypnose-confiance-en-soi-paris"
+        schema={confianceSchema}
+      />
 
       <div className="max-w-[800px] mx-auto">
         <FadeIn>
           <div className="flex justify-between items-center mb-8 w-full">
             <Link to="/#specialites" className="text-accent-secondary hover:underline">&larr; Retour à l'accueil</Link>
-            <Link to="/specialites/arret-tabac" className="text-accent-secondary hover:underline text-right">Arrêt du Tabac &rarr;</Link>
+            <Link to="/hypnose-arret-tabac-paris" className="text-accent-secondary hover:underline text-right">Arrêt du Tabac &rarr;</Link>
           </div>
           <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-title font-semibold mb-6 text-white">
             Renforcer sa <span className="text-accent-secondary">Confiance en soi</span> par l'Hypnose
@@ -55,7 +86,7 @@ export function Confiance() {
         <FadeIn delay={0.2}>
           <h2 className="text-2xl font-title font-semibold text-white mb-6">Un accompagnement sur-mesure</h2>
           <p className="text-text-muted mb-8 leading-relaxed">
-            Chaque problématique de confiance est unique. Je vous accompagne à Paris 10 avec une approche bienveillante, en hypnose conversationnelle ou en profondeur, pour vous permettre de renouer avec vos capacités et votre valeur.
+            Chaque problématique de confiance est unique. Je vous accompagne à Paris 10 ou Paris 5 avec une approche bienveillante, en hypnose conversationnelle ou en profondeur, pour vous permettre de renouer avec vos capacités et votre valeur.
           </p>
           
           <div className="bg-gradient-to-br from-accent-secondary/10 to-transparent p-8 rounded-2xl border border-accent-secondary/20 text-center">

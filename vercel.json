@@ -1,4 +1,57 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/specialites/arret-tabac",
+      "destination": "/hypnose-arret-tabac-paris",
+      "permanent": true
+    },
+    {
+      "source": "/specialites/stress-anxiete",
+      "destination": "/hypnose-stress-anxiete-paris",
+      "permanent": true
+    },
+    {
+      "source": "/specialites/troubles-sommeil",
+      "destination": "/hypnose-sommeil-insomnie-paris",
+      "permanent": true
+    },
+    {
+      "source": "/specialites/confiance-en-soi",
+      "destination": "/hypnose-confiance-en-soi-paris",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' blob:; font-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://script.google.com;"
+        }
+      ]
+    }
+  ]
 }
