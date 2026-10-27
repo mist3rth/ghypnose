@@ -89,7 +89,7 @@
   - Correction mobile : retrait de `overflow-hidden` sur la carte contact parent et calibrage de l'espacement pour que toutes les options soient visibles sans aucune coupure.
 
 ## Phase 10 : Section FAQ (SEO, AEO, Réassurance & Navigation)
-- [x] Créer le composant `src/components/sections/FAQ.tsx` (accordéon accessible WCAG AA, 5 questions/réponses stratégiques, retrait du badge préliminaire).
+- [x] Créer le composant `src/components/sections/FAQ.tsx` (accordéon accessible WCAG AA, 4 questions/réponses stratégiques ciblées, retrait du badge préliminaire).
 - [x] Intégrer le balisage Schema.org JSON-LD `FAQPage` dans `src/App.tsx` et `SEOHead.tsx` (validé présent dans `dist/index.html` pour les Rich Snippets Google et AEO).
 - [x] Insérer la section FAQ sur la Home entre `Testimonials` et `Contact`.
 - [x] Ajouter le lien **FAQ** dans la barre de navigation desktop et dans le menu burger mobile juste avant **Contact**.
