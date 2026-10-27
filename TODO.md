@@ -71,4 +71,5 @@
   - Ajout d'un poster dédié et dimensions sur `PractitionerVideo`.
 - [x] Mettre en conformité `public/llms.txt` avec les recommandations llmstxt.org / Lighthouse (H1, bloc de citation, liens Markdown obligatoires).
 - [x] Gérer le défilement réactif cross-pages : redirection fluide et calage automatique vers le formulaire `#contact` depuis les 4 pages de spécialités.
+- [x] Corriger le blocage du hover/clic sur le bouton "Offrir" du bloc "Bon • Réflexologie" (neutralisation du calque flou décoratif via `pointer-events-none` et élévation `relative z-10`).
 
