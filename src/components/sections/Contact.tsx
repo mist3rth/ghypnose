@@ -97,7 +97,7 @@ export function Contact() {
   return (
     <section id="contact" className="pt-16 pb-24 md:pt-20 md:pb-32 px-4 scroll-mt-20">
       <div className="max-w-[700px] mx-auto">
-        <div className="bg-white/5 backdrop-blur-[24px] border border-accent-primary/15 rounded-3xl p-6 md:p-12 overflow-hidden">
+        <div className="bg-white/5 backdrop-blur-[24px] border border-accent-primary/15 rounded-3xl p-6 md:p-12 relative">
           <h2 className="text-[clamp(1.8rem,6vw,3rem)] mb-4 text-center bg-gradient-to-br from-white to-accent-primary bg-clip-text text-transparent font-title font-semibold">
             Contactez moi
           </h2>

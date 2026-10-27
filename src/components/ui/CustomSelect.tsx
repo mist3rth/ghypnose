@@ -135,14 +135,14 @@ export function CustomSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="absolute z-50 top-full left-0 right-0 mt-2 p-2 bg-[#0c1322]/98 backdrop-blur-[24px] border border-accent-primary/25 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] max-h-[320px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-accent-primary/30"
+            className="absolute z-50 top-full left-0 right-0 mt-2 p-1.5 sm:p-2 bg-[#0c1322]/98 backdrop-blur-[24px] border border-accent-primary/25 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] max-h-[290px] sm:max-h-[340px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-accent-primary/30"
           >
             <ul
               ref={listboxRef}
               role="listbox"
               aria-label={placeholder}
               tabIndex={-1}
-              className="m-0 p-0 list-none flex flex-col gap-1.5"
+              className="m-0 p-0 list-none flex flex-col gap-1"
             >
               {options.map((opt, idx) => {
                 const isSelected = opt.value === value;
@@ -155,7 +155,7 @@ export function CustomSelect({
                     aria-selected={isSelected}
                     onClick={() => handleSelect(opt.value)}
                     onMouseEnter={() => setActiveIndex(idx)}
-                    className={`px-4 py-3 rounded-xl flex items-center justify-between cursor-pointer transition-all duration-150 select-none ${
+                    className={`px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl flex items-center justify-between cursor-pointer transition-all duration-150 select-none ${
                       isSelected
                         ? 'bg-gradient-to-r from-accent-primary/20 to-accent-primary/10 text-accent-primary font-semibold border border-accent-primary/30 shadow-[0_0_12px_rgba(212,175,55,0.15)]'
                         : isItemActive

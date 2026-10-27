@@ -86,4 +86,5 @@
   - Menu flottant en verre sombre (`#0c1322` avec flou `backdrop-blur-[24px]` et bordure dorée `accent-primary/25`).
   - Coche de sélection dorée, survol réactif, support clavier complet (A11Y : flèches, Entrée, Échap) et fermeture au clic extérieur.
   - Activation instantanée du bouton « Continuer » lors de la sélection d'un motif.
+  - Correction mobile : retrait de `overflow-hidden` sur la carte contact parent et calibrage de l'espacement pour que toutes les options soient visibles sans aucune coupure.
 
