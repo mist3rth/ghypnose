@@ -70,4 +70,5 @@
   - Ajout des attributs `width="1280"` et `height="720"` et `preload="auto"` sur la vidéo hero.
   - Ajout d'un poster dédié et dimensions sur `PractitionerVideo`.
 - [x] Mettre en conformité `public/llms.txt` avec les recommandations llmstxt.org / Lighthouse (H1, bloc de citation, liens Markdown obligatoires).
+- [x] Gérer le défilement réactif cross-pages : redirection fluide et calage automatique vers le formulaire `#contact` depuis les 4 pages de spécialités.
 
