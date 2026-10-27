@@ -36,6 +36,15 @@ export function MainLayout() {
         lenis.resize();
       }
 
+      // Si changement de page, on réinitialise immédiatement le scroll au sommet (0)
+      // pour que le défilement animé parte proprement du haut de la page d'accueil
+      if (isPageChange) {
+        window.scrollTo(0, 0);
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        }
+      }
+
       let attempts = 0;
       const maxAttempts = 30;
 
@@ -46,11 +55,10 @@ export function MainLayout() {
             lenis.resize();
             lenis.scrollTo(targetElement, { 
               offset: 30, 
-              immediate: isPageChange,
-              duration: isPageChange ? 0 : 1.2 
+              duration: isPageChange ? 1.5 : 1.2 
             });
           } else {
-            targetElement.scrollIntoView({ behavior: isPageChange ? 'instant' : 'smooth' });
+            targetElement.scrollIntoView({ behavior: 'smooth' });
           }
         } else if (attempts < maxAttempts) {
           attempts++;
@@ -58,41 +66,13 @@ export function MainLayout() {
         }
       };
 
-      // Lors d'un changement de page, le DOM grandit asynchronement (médias, fonts, vidéos).
-      // Un ResizeObserver sur document.body garantit que dès que la hauteur réelle de la page
-      // est atteinte, le scroll se recale exactement sur l'ancre ciblée.
-      let observer: ResizeObserver | null = null;
-      if (typeof ResizeObserver !== 'undefined') {
-        observer = new ResizeObserver(() => {
-          performScroll();
-        });
-        observer.observe(document.body);
-      }
-
-      performScroll();
-      const t1 = setTimeout(performScroll, 50);
-      const t2 = setTimeout(performScroll, 150);
-      const t3 = setTimeout(performScroll, 300);
-      const t4 = setTimeout(performScroll, 600);
-      const t5 = setTimeout(performScroll, 1000);
-
-      const stopObserverTimer = setTimeout(() => {
-        if (observer) {
-          observer.disconnect();
-          observer = null;
-        }
-      }, 1500);
+      // Lors d'un changement de page, on laisse 100ms au DOM pour initialiser sa hauteur
+      // avant de lancer l'animation de défilement fluide
+      const startDelay = isPageChange ? 100 : 0;
+      const tStart = setTimeout(performScroll, startDelay);
 
       return () => {
-        clearTimeout(t1);
-        clearTimeout(t2);
-        clearTimeout(t3);
-        clearTimeout(t4);
-        clearTimeout(t5);
-        clearTimeout(stopObserverTimer);
-        if (observer) {
-          observer.disconnect();
-        }
+        clearTimeout(tStart);
       };
     } else {
       // Nouvelle page sans ancre : retour instantané en haut

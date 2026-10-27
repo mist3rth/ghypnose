@@ -78,8 +78,7 @@
   - `#process` -> `#deroulement`
   - `#hero` -> `#accueil`
 - [x] Mise en place d'une rétrocompatibilité automatique (`legacyHashMap`) dans `MainLayout.tsx` pour rediriger les anciennes ancres anglaises en mémoire sans casser d'anciens liens ou favoris.
-- [x] Résolution définitive du blocage à « À propos / Mes Formations » lors du clic CTA cross-page :
-  - **Cause racine identifiée :** Lors du montage de la home, les sections supérieures (vidéos, polices, composants) étirent progressivement la page de 2 000 px à 12 379 px. Comme Lenis conservait la hauteur limitée de la page précédente et qu'un scroll statique trop précoce figeait la coordonnée initiale, le défilement était bridé à mi-hauteur.
-  - **Correction :** Implémentation d'un `ResizeObserver` sur `document.body` couplé à `lenis.resize()` et à un recalage instantané (`immediate: true, offset: 30`) jusqu'à stabilisation complète du DOM.
-  - **Validation :** Test automatisé en navigateur subagent confirmant l'atterrissage direct et parfaitement centré sous la navbar sur le formulaire « Contactez moi ».
+- [x] Restauration du défilement fluide (smooth scroll) vers le formulaire :
+  - **Comportement :** Au changement de route vers une ancre, la position est initialisée au sommet (`scrollY = 0`), puis une animation fluide et progressive Lenis (`duration: 1.5s`, offset sous nav) fait glisser la vue jusqu'au formulaire de contact.
+  - **Explication des 12 pages SSG :** Documenté pour l'utilisateur (7 pages publiques + 1 page 404 + 4 pages d'alias pour les anciens slugs).
 
