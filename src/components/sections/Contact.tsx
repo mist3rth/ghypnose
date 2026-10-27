@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail, CheckCircle2, ChevronDown } from 'lucide-react';
+import { Phone, Mail, CheckCircle2 } from 'lucide-react';
+import { CustomSelect, type SelectOption } from '../ui/CustomSelect';
+
+const SUBJECT_OPTIONS: SelectOption[] = [
+  { value: 'stress', label: 'Stress & Anxiété' },
+  { value: 'tabac', label: 'Arrêt Tabac' },
+  { value: 'sommeil', label: 'Troubles du Sommeil & Insomnie' },
+  { value: 'confiance', label: 'Confiance en soi' },
+  { value: 'autre', label: 'Autre demande' },
+];
 
 export function Contact() {
   const [step, setStep] = useState(1);
@@ -141,27 +150,16 @@ export function Contact() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6 flex-1"
                 >
-                  <label htmlFor="subject" className="text-xl font-semibold text-white mb-2 block">Quel est le motif de votre consultation ?</label>
-                  <div className="relative">
-                    <select 
-                      id="subject" 
-                      name="subject" 
-                      required 
-                      value={formData.subject} 
-                      onChange={handleChange} 
-                      className={`${inputClasses} appearance-none cursor-pointer pr-12 ${!formData.subject ? 'text-white/40' : 'text-white font-medium'} hover:border-accent-primary/40 focus:border-accent-primary focus:shadow-[0_0_20px_rgba(212,175,55,0.2)]`}
-                    >
-                      <option value="" disabled className="bg-[#0c1322] text-white/40">Choisissez un motif dans la liste...</option>
-                      <option value="stress" className="bg-[#0c1322] text-white py-2">Stress & Anxiété</option>
-                      <option value="tabac" className="bg-[#0c1322] text-white py-2">Arrêt Tabac</option>
-                      <option value="sommeil" className="bg-[#0c1322] text-white py-2">Troubles du Sommeil & Insomnie</option>
-                      <option value="confiance" className="bg-[#0c1322] text-white py-2">Confiance en soi</option>
-                      <option value="autre" className="bg-[#0c1322] text-white py-2">Autre demande</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-accent-primary transition-transform duration-200">
-                      <ChevronDown className="w-5 h-5" />
-                    </div>
-                  </div>
+                  <label htmlFor="subject-select" className="text-xl font-semibold text-white mb-2 block">Quel est le motif de votre consultation ?</label>
+                  <CustomSelect
+                    id="subject-select"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={(val) => setFormData(prev => ({ ...prev, subject: val }))}
+                    options={SUBJECT_OPTIONS}
+                    placeholder="Choisissez un motif dans la liste..."
+                  />
                   
                   <div className="mt-auto pt-6 flex justify-end">
                     <button 

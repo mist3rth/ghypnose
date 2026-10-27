@@ -81,9 +81,9 @@
 - [x] Restauration du défilement fluide (smooth scroll) vers le formulaire :
   - **Comportement :** Au changement de route vers une ancre, la position est initialisée au sommet (`scrollY = 0`), puis une animation fluide et progressive Lenis (`duration: 1.5s`, offset sous nav) fait glisser la vue jusqu'au formulaire de contact.
   - **Explication des 12 pages SSG :** Documenté pour l'utilisateur (7 pages publiques + 1 page 404 + 4 pages d'alias pour les anciens slugs).
-- [x] Habillage sur-mesure du menu déroulant `<select>` de l'Étape 1 du formulaire :
-  - Suppression de la flèche native moche (`appearance-none`).
-  - Ajout d'une flèche dorée personnalisée (`ChevronDown` en `text-accent-primary`) intégrée avec transition.
-  - Arrière-plan sombre translucide en verre (`bg-white/5 border border-white/15`) avec halo lumineux doré au focus (`focus:shadow-[0_0_20px_rgba(212,175,55,0.2)]`).
-  - Menu déroulant avec fond sombre `#0c1322` et ajout du motif manquant « Troubles du Sommeil & Insomnie ».
+- [x] Remplacement du `<select>` natif par un composant accessible sur-mesure `<CustomSelect>` :
+  - Fin du menu déroulant rectangulaire gris natif de l'OS.
+  - Menu flottant en verre sombre (`#0c1322` avec flou `backdrop-blur-[24px]` et bordure dorée `accent-primary/25`).
+  - Coche de sélection dorée, survol réactif, support clavier complet (A11Y : flèches, Entrée, Échap) et fermeture au clic extérieur.
+  - Activation instantanée du bouton « Continuer » lors de la sélection d'un motif.
 
