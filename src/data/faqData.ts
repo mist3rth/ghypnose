@@ -19,9 +19,5 @@ export const FAQ_DATA: FAQItem[] = [
   {
     question: "Les séances sont-elles remboursées par la Sécurité Sociale ou ma mutuelle ?",
     answer: "L'hypnothérapie n'est pas prise en charge par la Sécurité Sociale. En revanche, un très grand nombre de mutuelles et complémentaires santé proposent un remboursement partiel ou total sous forme de forfait annuel 'médecines douces'. Une note d'honoraires officielle avec numéro SIRET vous est systématiquement remise à l'issue de chaque consultation."
-  },
-  {
-    question: "Comment se déroule la première consultation dans vos cabinets parisiens ?",
-    answer: "La séance inaugurale dure entre 1h et 1h30. Nous prenons d'abord le temps d'échanger en profondeur sur votre situation, vos blocages et vos attentes précises. Ensuite, nous réalisons une première expérience hypnotique personnalisée pour amorcer le travail inconscient. Enfin, nous débriefons ensemble et je vous transmets des outils d'auto-hypnose simples à reproduire chez vous."
   }
 ];
