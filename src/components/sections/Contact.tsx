@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, CheckCircle2, ChevronDown } from 'lucide-react';
 
 export function Contact() {
   const [step, setStep] = useState(1);
@@ -142,14 +142,25 @@ export function Contact() {
                   className="flex flex-col gap-6 flex-1"
                 >
                   <label htmlFor="subject" className="text-xl font-semibold text-white mb-2 block">Quel est le motif de votre consultation ?</label>
-                  <div>
-                    <select id="subject" name="subject" required value={formData.subject} onChange={handleChange} className={inputClasses}>
-                      <option value="" disabled>Choisissez un motif dans la liste...</option>
-                      <option value="stress" className="bg-[#050b14] text-white">Stress & Anxiété</option>
-                      <option value="tabac" className="bg-[#050b14] text-white">Arrêt Tabac</option>
-                      <option value="confiance" className="bg-[#050b14] text-white">Confiance en soi</option>
-                      <option value="autre" className="bg-[#050b14] text-white">Autre demande</option>
+                  <div className="relative">
+                    <select 
+                      id="subject" 
+                      name="subject" 
+                      required 
+                      value={formData.subject} 
+                      onChange={handleChange} 
+                      className={`${inputClasses} appearance-none cursor-pointer pr-12 ${!formData.subject ? 'text-white/40' : 'text-white font-medium'} hover:border-accent-primary/40 focus:border-accent-primary focus:shadow-[0_0_20px_rgba(212,175,55,0.2)]`}
+                    >
+                      <option value="" disabled className="bg-[#0c1322] text-white/40">Choisissez un motif dans la liste...</option>
+                      <option value="stress" className="bg-[#0c1322] text-white py-2">Stress & Anxiété</option>
+                      <option value="tabac" className="bg-[#0c1322] text-white py-2">Arrêt Tabac</option>
+                      <option value="sommeil" className="bg-[#0c1322] text-white py-2">Troubles du Sommeil & Insomnie</option>
+                      <option value="confiance" className="bg-[#0c1322] text-white py-2">Confiance en soi</option>
+                      <option value="autre" className="bg-[#0c1322] text-white py-2">Autre demande</option>
                     </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-accent-primary transition-transform duration-200">
+                      <ChevronDown className="w-5 h-5" />
+                    </div>
                   </div>
                   
                   <div className="mt-auto pt-6 flex justify-end">
