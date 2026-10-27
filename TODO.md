@@ -88,9 +88,12 @@
   - Activation instantanée du bouton « Continuer » lors de la sélection d'un motif.
   - Correction mobile : retrait de `overflow-hidden` sur la carte contact parent et calibrage de l'espacement pour que toutes les options soient visibles sans aucune coupure.
 
-## Phase 10 : Section FAQ (SEO, AEO & Réassurance)
+## Phase 10 : Section FAQ (SEO, AEO, Réassurance & Navigation)
 - [x] Créer le composant `src/components/sections/FAQ.tsx` (accordéon accessible WCAG AA, 5 questions/réponses stratégiques, retrait du badge préliminaire).
 - [x] Intégrer le balisage Schema.org JSON-LD `FAQPage` dans `src/App.tsx` et `SEOHead.tsx` (validé présent dans `dist/index.html` pour les Rich Snippets Google et AEO).
 - [x] Insérer la section FAQ sur la Home entre `Testimonials` et `Contact`.
-- [x] Valider la compilation SSG, le linter et tester l'accordéon en conditions réelles.
+- [x] Ajouter le lien **FAQ** dans la barre de navigation desktop et dans le menu burger mobile juste avant **Contact**.
+- [x] Première question ouverte par défaut (`openIndex = 0`) pour lever immédiatement les freins des visiteurs.
+- [x] Remplacement de l'animation de repli par une transition CSS Grid native (`grid-template-rows: 0fr/1fr`) et suppression du `transition-all` sur les cartes, éliminant tout à-coup ou secousse à la fermeture.
+- [x] Valider la compilation SSG (12 pages), oxlint (0 erreurs) et tester l'accordéon en conditions réelles.
 
